@@ -24,6 +24,7 @@
     <attr name="colorBg" format="color" />
     <attr name="colorIcon" format="color" />
     <attr name="colorCard" format="color" />
+    <attr name="activeIndicatorLabelPadding" format="dimension" />
     <attr name="colorBgSimpleMenu" format="color" />
     <attr name="colorSimpleMenuSelected" format="color" />
     
