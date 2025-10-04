@@ -20,6 +20,7 @@ class ExpandableLayout(context: Context, attrs: AttributeSet?) : LinearLayout(co
         expandableContent = findViewById(getResources(context, "id/expandable_view"))
         arrowIcon = findViewById(getResources(context, "id/arrow_button"))
         cardExpandable = findViewById(getResources(context, "id/card_expandable"))
+        cardExpandable.setOnClickListener(this)
         arrowIcon.setOnClickListener(this)
         initializeLogic()
     }
