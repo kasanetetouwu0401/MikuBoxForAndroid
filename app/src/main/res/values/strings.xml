@@ -25,7 +25,7 @@
     <string name="action_open">Open</string>
     <!-- group -->
     <string name="group_name">Group name</string>
-    <string name="group_update">Update</string>
+    <string name="group_update" formatted="false">Update</string>
     <string name="group_subscription_link">Subscription Link</string>
     <string name="group_name_required">Group name required</string>
     <string name="group_create">Create group</string>
@@ -36,9 +36,9 @@
     <string name="group_status_empty">Empty group</string>
     <string name="group_status_empty_subscription">Not updated yet</string>
     <string name="group_status_proxies">%d Proxies</string>
-    <string name="group_status_proxies_subscription">%d Proxies | Updated on %s</string>
+    <string name="group_status_proxies_subscription" formatted="false">%d Proxies | Updated on %s</string>
     <string name="group_no_difference">%s: No difference</string>
-    <string name="group_updated">%s: Updated %d proxies</string>
+    <string name="group_updated" formatted="false">%s: Updated %d proxies</string>
     <string name="group_show_diff">Diff</string>
     <string name="group_diff">Diff (%s)</string>
     <string name="group_delete_confirm_prompt">Are you sure you want to remove this group?</string>
@@ -358,7 +358,7 @@
     <string name="subscription_user_agent">UserAgent</string>
     <string name="confirm">Confirm</string>
     <string name="missing_plugin">Missing Plugin</string>
-    <string name="profile_requiring_plugin">Profile %s requires the %s plugin to be installed, but
+    <string name="profile_requiring_plugin" formatted="false">Profile %s requires the %s plugin to be installed, but
         it was not found.</string>
     <string name="action_learn_more">LEARN MORE</string>
     <string name="action_download">DOWNLOAD</string>
@@ -377,7 +377,7 @@
     <string name="subscription_update_message">Updating %s …</string>
     <string name="group_filter">Filter</string>
     <string name="subscription_used">%s Used</string>
-    <string name="subscription_traffic">%s Used / %s Remaining</string>
+    <string name="subscription_traffic" formatted="false">%s Used / %s Remaining</string>
     <string name="subscription_expire">Expire: %s</string>
     <string name="subscription_import">Import subscription</string>
     <string name="subscription_import_message">Confirm you want to import subscription %s? If you
@@ -402,7 +402,7 @@
     <string name="group_order_origin">Origin</string>
     <string name="group_order_by_name">By Name</string>
     <string name="group_order_by_delay">By Delay</string>
-    <string name="plugin_exists_but_on_shit_system">Profile %s requires the %s plugin, but your
+    <string name="plugin_exists_but_on_shit_system" formatted="false">Profile %s requires the %s plugin, but your
         proprietary equipment vendor (usually surveillance capital giants and malware maker)
         tampered with your Android, making the plugin unusable.</string>
 
@@ -504,9 +504,9 @@
     <string name="tuic_disable_sni">Disable SNI</string>
     <string name="tuic_reduce_rtt">Enable 0-RTT QUIC handshake</string>
 
-    <string name="please_update">Your APP is too old (%s). And will stop working at %s. Please
+    <string name="please_update" formatted="false">Your APP is too old (%s). And will stop working at %s. Please
         update!</string>
-    <string name="please_update_force">Your APP is too old (%s). And has been stopped working at %s.
+    <string name="please_update_force" formatted="false">Your APP is too old (%s). And has been stopped working at %s.
         Please update!</string>
     <string name="connection_test_delete_unavailable">Clear unavailable</string>
     <string name="move">Move</string>
@@ -575,7 +575,7 @@
     <string name="reset_settings">Restore default settings</string>
     <string name="reset_settings_message">Restore default settings, but data such as nodes and groups will be retained. To completely clear data, clear application data directly in the system settings.</string>
     <string name="minimize">Minimize</string>
-
+    <!-- uwu -->
     <string name="uwu_about_miku_summary">Hatsune Miku is a Vocaloid-based virtual singer released by Crypton Future Media, code-named CV01. Known for her long turquoise twintails and clear voice, she is a 16-year-old girl and a globally renowned virtual idol. She is active in music, concerts, and anime, and is deeply loved by her fans.</string>
     <string name="uwu_about_miku_title">Who is Hatsune Miku?</string>
     <string name="uwu_about_modder_channel_summary">Telegram channel update</string>
@@ -599,5 +599,4 @@ By Matsuridayo Development"</string>
     <string name="uwu_theme_settings_summary">Choose the accent color yourself</string>
     <string name="uwu_theme_settings_title">Theme settings</string>
     <string name="uwu_banner_settings_title">Hello there...</string>
-    
 </resources>
