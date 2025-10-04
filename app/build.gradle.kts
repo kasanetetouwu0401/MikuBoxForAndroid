@@ -10,6 +10,9 @@ plugins {
 setupApp()
 
 android {
+defaultConfig {
+    vectorDrawables.useSupportLibrary = true
+  }
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
     }
@@ -25,6 +28,7 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+        dataBinding = true
         aidl = true
     }
     namespace = "io.nekohasekai.sagernet"
