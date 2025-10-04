@@ -1,7 +1,7 @@
 package com.neko.switchbutton;
 
 import android.content.res.ColorStateList;
-import com.neko.R;
+import io.nekohasekai.sagernet.R;
 
 /**
  * Generate thumb and background color state list use tintColor
