@@ -11,7 +11,7 @@ import androidx.annotation.FloatRange;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
-import com.neko.R;
+import io.nekohasekai.sagernet.R;
 
 import java.util.List;
 import java.util.Random;
