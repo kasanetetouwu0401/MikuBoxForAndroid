@@ -28,7 +28,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
-import io.nekohasekai.sagernet.R
+import io.nekohasekai.sagernet.R;
 
 
 /**
