@@ -28,7 +28,6 @@ defaultConfig {
     buildFeatures {
         buildConfig = true
         viewBinding = true
-        dataBinding = true
         aidl = true
     }
     namespace = "io.nekohasekai.sagernet"
@@ -57,7 +56,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.work:work-runtime-ktx:2.8.1")
     implementation("androidx.work:work-multiprocess:2.8.1")
 
