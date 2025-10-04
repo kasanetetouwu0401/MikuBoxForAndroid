@@ -30,7 +30,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.neko.circleimageview.CircleImageView;
 import io.nekohasekai.sagernet.ui.MainActivity;
 import io.nekohasekai.sagernet.ui.ThemedActivity;
-import com.neko.R;
+import io.nekohasekai.sagernet.R
 import java.io.*;
 import java.text.*;
 import java.util.*;
