@@ -31,7 +31,7 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import io.nekohasekai.sagernet.R
+import io.nekohasekai.sagernet.R;
 
 public class ParticlesView extends View implements IParticlesView, SceneScheduler, ParticlesScene {
 
