@@ -71,12 +71,11 @@ open class SimpleMenuPreference
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
             val view: View = super.getDropDownView(position, convertView, parent)
             if (position == currentPosition) {
-                view.setBackgroundColor(context.getColorAttr(R.attr.colorMaterial100))
+                view.setBackgroundColor(context.getColorAttr(R.attr.colorSimpleMenuSelected))
             } else {
                 view.setBackgroundColor(
-                    ContextCompat.getColor(
-                        context,
-                        R.color.preference_simple_menu_background
+                    context.getColorAttr(
+                        R.attr.colorBgSimpleMenu
                     )
                 )
             }
