@@ -44,7 +44,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import com.neko.R;
+import io.nekohasekai.sagernet.R
 
 @SuppressWarnings("UnusedDeclaration")
 public class CircleImageView extends AppCompatImageView {
