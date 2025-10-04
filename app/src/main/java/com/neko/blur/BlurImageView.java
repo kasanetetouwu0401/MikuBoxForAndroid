@@ -12,7 +12,7 @@ import android.renderscript.ScriptIntrinsicBlur;
 import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
-import io.nekohasekai.sagernet.R
+import io.nekohasekai.sagernet.R:
 
 
 public class BlurImageView extends AppCompatImageView {
