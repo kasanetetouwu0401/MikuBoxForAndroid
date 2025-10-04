@@ -677,6 +677,7 @@
     <color name="purple_outline_highContrast">#ff4d3e4c</color>
     <color name="purple_outlineVariant_highContrast">#ff4d3e4c</color>
     <color name="purple_inverseSurface_highContrast">#ff372d36</color>
+    <color name="purple_scrim_highContrast">#ff000000</color>
     <color name="purple_inverseOnSurface_highContrast">#ffffffff</color>
     <color name="purple_inversePrimary_highContrast">#ffffe4fc</color>
     <color name="purple_primaryFixed_highContrast">#ff750088</color>
@@ -3671,5 +3672,6 @@
     <color name="color_ng_black_primary">#2B2B2B</color>
 
     <color name="preference_simple_menu_background">#FAFAFA</color>
+
 
 </resources>
