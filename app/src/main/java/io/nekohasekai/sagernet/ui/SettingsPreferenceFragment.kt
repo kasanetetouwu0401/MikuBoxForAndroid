@@ -27,6 +27,9 @@ import moe.matsuri.nb4a.ui.LongClickListPreference
 import moe.matsuri.nb4a.ui.MTUPreference
 import com.takisoft.preferencex.PreferenceFragmentCompat
 import com.takisoft.preferencex.SimpleMenuPreference
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import java.util.Locale
 
 class SettingsPreferenceFragment : PreferenceFragmentCompat() {
 
@@ -67,6 +70,36 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             Theme.applyNightTheme()
             true
         }
+
+        fun getLanguageDisplayName(code: String): String {
+        return when (code) {
+            "" -> getString(R.string.language_system_default)
+            "en-US" -> getString(R.string.language_en_display_name)
+            "id" -> getString(R.string.language_id_display_name)
+            "zh-Hans-CN" -> getString(R.string.language_zh_Hans_CN_display_name)
+            else -> Locale.forLanguageTag(code).displayName
+        }
+    }
+
+    val appLanguage = findPreference<SimpleMenuPreference>(Key.APP_LANGUAGE)
+
+    if (appLanguage != null) {
+        val locale = when (val value = AppCompatDelegate.getApplicationLocales().toLanguageTags()) {
+            "in" -> "id" // handle old Android "in" locale code
+            else -> value
+        }
+
+        appLanguage.summary = getLanguageDisplayName(locale)
+        appLanguage.value = if (locale in resources.getStringArray(R.array.language_value)) locale else ""
+
+        appLanguage.setOnPreferenceChangeListener { _, newValue ->
+            val newLocale = newValue as String
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(newLocale))
+            appLanguage.summary = getLanguageDisplayName(newLocale)
+            appLanguage.value = newLocale
+            true
+        }
+    }
 
         val mixedPort = findPreference<EditTextPreference>(Key.MIXED_PORT)!!
         mixedPort.setOnBindEditTextListener(EditTextPreferenceModifiers.Port)
