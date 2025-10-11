@@ -2,15 +2,14 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Preference
-        android:layout="@layout/uwu_banner"
-        android:selectable="false" />
+    
     <EditTextPreference
-        android:layout="@layout/uwu_banner_bottom"
+        android:layout="@layout/uwu_banner_profile"
         app:icon="@drawable/ic_social_emoji_symbols"
         app:key="groupName"
         app:title="@string/group_name"
         app:useSimpleSummaryProvider="true" />
+    
     <PreferenceCategory
         app:title="@string/uwu_general_settings_title">
         <com.takisoft.preferencex.SimpleMenuPreference
