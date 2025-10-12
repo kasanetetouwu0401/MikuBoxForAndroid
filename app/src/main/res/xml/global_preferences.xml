@@ -148,6 +148,14 @@
             app:key="acquireWakeLock"
             app:summary="@string/acquire_wake_lock_summary"
             app:title="@string/acquire_wake_lock" />
+
+        <SwitchPreference
+            android:layout="@layout/uwu_mid_switch"
+            android:widgetLayout="@layout/uwu_switch"
+            app:icon="@drawable/ic_eye_off"
+            app:key="hide_from_recent_apps"
+            app:summary="@string/hide_from_recent_apps_summary"
+            app:title="@string/hide_from_recent_apps" />
         
         <moe.matsuri.nb4a.ui.LongClickListPreference
             android:layout="@layout/uwu_mid"

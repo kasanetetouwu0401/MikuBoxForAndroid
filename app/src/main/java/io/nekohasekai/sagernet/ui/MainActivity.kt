@@ -49,6 +49,10 @@ import io.nekohasekai.sagernet.ktx.parseProxies
 import io.nekohasekai.sagernet.ktx.readableMessage
 import io.nekohasekai.sagernet.ktx.runOnDefaultDispatcher
 import moe.matsuri.nb4a.utils.Util
+import io.nekohasekai.sagernet.ui.MessageStore
+import io.nekohasekai.sagernet.ktx.Logs
+import android.app.ActivityManager
+import android.content.Context
 
 class MainActivity : ThemedActivity(),
     SagerConnection.Callback,
@@ -123,6 +127,28 @@ class MainActivity : ThemedActivity(),
                 .setMessage(R.string.preview_version_hint)
                 .setPositiveButton(android.R.string.ok, null)
                 .show()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MessageStore.setCurrentActivity(this)
+        
+        if (DataStore.hideFromRecentApps) {
+            applyHideFromRecentApps(DataStore.hideFromRecentApps)
+        }
+    }
+    
+    fun applyHideFromRecentApps(hide: Boolean) {
+        try {
+            val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val tasks = activityManager.appTasks
+            if (tasks.isNotEmpty()) {
+                val task = tasks[0]
+                task.setExcludeFromRecents(hide)
+            }
+        } catch (e: Exception) {
+            Logs.w("Failed to set excludeFromRecents: ${e.message}")
         }
     }
 

@@ -127,7 +127,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             needReload()
             true
         }
-
+        val hideFromRecentApps = findPreference<SwitchPreference>("hide_from_recent_apps")!!
         val enableClashAPI = findPreference<SwitchPreference>(Key.ENABLE_CLASH_API)!!
         enableClashAPI.setOnPreferenceChangeListener { _, newValue ->
             (activity as? MainActivity)?.refreshNavMenu(newValue as Boolean)
