@@ -88,6 +88,7 @@ import io.nekohasekai.sagernet.ui.profile.SocksSettingsActivity
 import io.nekohasekai.sagernet.ui.profile.TrojanGoSettingsActivity
 import io.nekohasekai.sagernet.ui.profile.TrojanSettingsActivity
 import io.nekohasekai.sagernet.ui.profile.TuicSettingsActivity
+import io.nekohasekai.sagernet.ui.profile.JuicitySettingsActivity
 import io.nekohasekai.sagernet.ui.profile.VMessSettingsActivity
 import io.nekohasekai.sagernet.ui.profile.WireGuardSettingsActivity
 import io.nekohasekai.sagernet.widget.QRCodeDialog
@@ -419,6 +420,10 @@ class ConfigurationFragment @JvmOverloads constructor(
 
             R.id.action_new_tuic -> {
                 startActivity(Intent(requireActivity(), TuicSettingsActivity::class.java))
+            }
+
+            R.id.action_new_juicity -> {
+                startActivity(Intent(requireActivity(), JuicitySettingsActivity::class.java))
             }
 
             R.id.action_new_ssh -> {

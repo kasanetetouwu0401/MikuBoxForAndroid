@@ -46,6 +46,8 @@ github.com/klauspost/compress v1.17.11 h1:In6xLpyWOi1+C7tXUUWv2ot1QvBjxevKAaI6IX
 github.com/klauspost/compress v1.17.11/go.mod h1:pMDklpSncoRMuLFrf1W9Ss9KT+0rH90U12bZKk7uwG0=
 github.com/klauspost/cpuid/v2 v2.2.10 h1:tBs3QSyvjDyFTq3uoc/9xFpCuOsJQFNPiAhYdw2skhE=
 github.com/klauspost/cpuid/v2 v2.2.10/go.mod h1:hqwkgyIinND0mEev00jJYCxPNVRVXFQeu1XKlok6oO0=
+github.com/dyhkwong/sing-juicity v0.0.3 h1:nm+dIlN9DlapXjajXdI7DxoCjrqtF4GRySLqQhwuqDk=
+github.com/dyhkwong/sing-juicity v0.0.3/go.mod h1:6rw3r0kaQCdujDdug3vS/8R7Ym8Db4rnOrPJBFah98U=
 github.com/libdns/alidns v1.0.5-libdns.v1.beta1 h1:txHK7UxDed3WFBDjrTZPuMn8X+WmhjBTTAMW5xdy5pQ=
 github.com/libdns/alidns v1.0.5-libdns.v1.beta1/go.mod h1:ystHmPwcGoWjPrGpensQSMY9VoCx4cpR2hXNlwk9H/g=
 github.com/libdns/cloudflare v0.2.2-0.20250708034226-c574dccb31a6 h1:3MGrVWs2COjMkQR17oUw1zMIPbm2YAzxDC3oGVZvQs8=

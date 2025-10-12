@@ -120,6 +120,9 @@ object Key {
     const val SERVER_DISABLE_SNI = "serverDisableSNI"
     const val SERVER_REDUCE_RTT = "serverReduceRTT"
 
+    const val SERVER_USER_ID = "serverUserId"
+    const val SERVER_PINNED_CERT_CHAIN_SHA256 = "serverPinnedCertChainSha256"
+
     const val ROUTE_NAME = "routeName"
     const val ROUTE_DOMAIN = "routeDomain"
     const val ROUTE_IP = "routeIP"
@@ -152,6 +155,18 @@ object Key {
 
     const val APP_TLS_VERSION = "appTLSVersion"
     const val ENABLE_CLASH_API = "enableClashAPI"
+
+    const val ENABLE_TLS_FRAGMENT = "enableTLSFragment"
+
+    const val FRAGMENT_LENGTH = "fragmentLength"
+    const val FRAGMENT_INTERVAL = "fragmentInterval"
+
+    const val WEBDAV_SERVER = "webdavServer"
+    const val WEBDAV_USERNAME = "webdavUsername"
+    const val WEBDAV_PASSWORD = "webdavPassword"
+    const val WEBDAV_PATH = "webdavPath"
+
+    const val GLOBAL_MODE = "globalMode"
 }
 
 object TunImplementation {

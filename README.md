@@ -41,6 +41,7 @@ https://matsuridayo.github.io
 * AnyTLS
 * ShadowTLS
 * TUIC
+* Juicity
 * Hysteria 1/2
 * WireGuard
 * Trojan-Go (trojan-go-plugin)
