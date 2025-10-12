@@ -1,7 +1,9 @@
 package io.nekohasekai.sagernet.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.database.ProxyEntity
 
@@ -16,7 +18,8 @@ class ProfileSelectActivity : ThemedActivity(R.layout.layout_empty),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val selected = intent.getParcelableExtra<ProxyEntity>(EXTRA_SELECTED)
+        // The corrected line using the modern, type-safe method
+        val selected = intent.getParcelableExtra(EXTRA_SELECTED, ProxyEntity::class.java)
 
         supportFragmentManager.beginTransaction()
             .replace(
