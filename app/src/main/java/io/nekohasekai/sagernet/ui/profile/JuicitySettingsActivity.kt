@@ -7,42 +7,32 @@ import androidx.preference.SwitchPreference
 import io.nekohasekai.sagernet.Key
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.database.DataStore
-import io.nekohasekai.sagernet.fmt.tuic.TuicBean
+import io.nekohasekai.sagernet.fmt.juicity.JuicityBean
 import io.nekohasekai.sagernet.ktx.applyDefaultValues
 
-class TuicSettingsActivity : ProfileSettingsActivity<TuicBean>() {
+class JuicitySettingsActivity : ProfileSettingsActivity<JuicityBean>() {
 
-    override fun createEntity() = TuicBean().applyDefaultValues()
+    override fun createEntity() = JuicityBean().applyDefaultValues()
 
-    override fun TuicBean.init() {
+    override fun JuicityBean.init() {
         DataStore.profileName = name
         DataStore.serverAddress = serverAddress
         DataStore.serverPort = serverPort
-        DataStore.serverUsername = uuid
-        DataStore.serverPassword = token
-        DataStore.serverALPN = alpn
-        DataStore.serverCertificates = caText
-        DataStore.serverUDPRelayMode = udpRelayMode
-        DataStore.serverCongestionController = congestionController
-        DataStore.serverDisableSNI = disableSNI
+        DataStore.serverUserId = uuid
+        DataStore.serverPassword = password
         DataStore.serverSNI = sni
-        DataStore.serverReduceRTT = reduceRTT
+        DataStore.serverPinnedCertChainSha256 = pinnedCertchainSha256
         DataStore.serverAllowInsecure = allowInsecure
     }
 
-    override fun TuicBean.serialize() {
+    override fun JuicityBean.serialize() {
         name = DataStore.profileName
         serverAddress = DataStore.serverAddress
         serverPort = DataStore.serverPort
-        uuid = DataStore.serverUsername
-        token = DataStore.serverPassword
-        alpn = DataStore.serverALPN
-        caText = DataStore.serverCertificates
-        udpRelayMode = DataStore.serverUDPRelayMode
-        congestionController = DataStore.serverCongestionController
-        disableSNI = DataStore.serverDisableSNI
+        uuid = DataStore.serverUserId
+        password = DataStore.serverPassword
         sni = DataStore.serverSNI
-        reduceRTT = DataStore.serverReduceRTT
+        pinnedCertchainSha256 = DataStore.serverPinnedCertChainSha256
         allowInsecure = DataStore.serverAllowInsecure
     }
 
@@ -50,19 +40,10 @@ class TuicSettingsActivity : ProfileSettingsActivity<TuicBean>() {
         savedInstanceState: Bundle?,
         rootKey: String?,
     ) {
-        addPreferencesFromResource(R.xml.tuic_preferences)
-
-        val disableSNI = findPreference<SwitchPreference>(Key.SERVER_DISABLE_SNI)!!
-        val sni = findPreference<EditTextPreference>(Key.SERVER_SNI)!!
-        sni.isEnabled = !disableSNI.isChecked
-        disableSNI.setOnPreferenceChangeListener { _, newValue ->
-            sni.isEnabled = !(newValue as Boolean)
-            true
-        }
+        addPreferencesFromResource(R.xml.juicity_preferences)
 
         findPreference<EditTextPreference>(Key.SERVER_PASSWORD)!!.apply {
             summaryProvider = PasswordSummaryProvider
         }
     }
-
 }

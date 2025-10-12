@@ -262,8 +262,8 @@ data class ProxyEntity(
             is TrojanGoBean -> toUri()
             is NaiveBean -> toUri()
             is HysteriaBean -> toUri()
+            is TuicBean -> toUri()
             is JuicityBean -> toUri()
-            TYPE_JUICITY -> juicityBean
             is AnyTLSBean -> toUri()
             is NekoBean -> ""
             else -> toUniversalLink()
@@ -435,6 +435,7 @@ data class ProxyEntity(
                 type = TYPE_JUICITY
                 juicityBean = bean
             }
+
             is ShadowTLSBean -> {
                 type = TYPE_SHADOWTLS
                 shadowTLSBean = bean

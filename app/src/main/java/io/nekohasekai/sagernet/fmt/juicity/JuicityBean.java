@@ -73,4 +73,4 @@ public class JuicityBean extends AbstractBean {
             return new JuicityBean[size];
         }
     };
-}1
+}
