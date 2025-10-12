@@ -123,6 +123,9 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var logBufSize by configurationStore.int(Key.LOG_BUF_SIZE) { 0 }
     var acquireWakeLock by configurationStore.boolean(Key.ACQUIRE_WAKE_LOCK)
 
+    var rulesGeositeUrl by configurationStore.string("rules_geosite_url") { "https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db" }
+    var rulesGeoipUrl by configurationStore.string("rules_geoip_url") { "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db" }
+
     // hopefully hashCode = mHandle doesn't change, currently this is true from KitKat to Nougat
     private val userIndex by lazy { Binder.getCallingUserHandle().hashCode() }
     var mixedPort: Int

@@ -134,6 +134,18 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             needReload()
             true
         }
+
+        val rulesProvider = findPreference<SimpleMenuPreference>(Key.RULES_PROVIDER)!!
+        val rulesGeositeUrl = findPreference<EditTextPreference>("rules_geosite_url")!!
+        val rulesGeoipUrl = findPreference<EditTextPreference>("rules_geoip_url")!!
+        rulesGeositeUrl.isVisible = DataStore.rulesProvider == 5
+        rulesGeoipUrl.isVisible = DataStore.rulesProvider == 5
+        rulesProvider.setOnPreferenceChangeListener { _, newValue ->
+            val provider = (newValue as String).toInt()
+            rulesGeositeUrl.isVisible = provider == 5
+            rulesGeoipUrl.isVisible = provider == 5
+            true
+        }
         
         val serviceMode = findPreference<Preference>(Key.SERVICE_MODE)!!
         serviceMode.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, _ ->

@@ -13,7 +13,7 @@
     <string name="menu_configuration">Configuration</string>
     <string name="menu_group">Group</string>
     <string name="menu_about">About</string>
-    <string name="theme">Theme</string>
+    <string name="theme">Theme Color</string>
     <string name="document">Document</string>
     <string name="group_default">Ungrouped</string>
     <string name="quick_toggle">Toggle</string>
@@ -589,6 +589,10 @@
     <string name="clear_cache_failed">Failed to clear cache: %s</string>
     <string name="clear_cache_success">Cache cleared</string>
     <string name="clear_cache_summary">Clear application cache files to fix some abnormal issues</string>
+
+    <string name="custom_rules_provider">Custom</string>
+    <string name="rules_geoip_url">geoip URL</string>
+    <string name="rules_geosite_url">geosite URL</string>
     
     <!-- uwu -->
     <string name="uwu_about_miku_summary">Hatsune Miku is a Vocaloid-based virtual singer released by Crypton Future Media, code-named CV01. Known for her long turquoise twintails and clear voice, she is a 16-year-old girl and a globally renowned virtual idol. She is active in music, concerts, and anime, and is deeply loved by her fans.</string>

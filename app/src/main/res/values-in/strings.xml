@@ -491,6 +491,8 @@
     <string name="clear_cache_failed">Gagal menghapus cache: %s</string>
     <string name="clear_cache_success">Cache dihapus</string>
     <string name="clear_cache_summary">Hapus file cache aplikasi untuk memperbaiki beberapa masalah abnormal</string>
+
+    <string name="custom_rules_provider">Kustom</string>
     
     
     <!-- uwu-->
