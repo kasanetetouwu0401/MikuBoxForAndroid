@@ -596,6 +596,9 @@
 
     <string name="hide_from_recent_apps">Hide from recent tasks</string>
     <string name="hide_from_recent_apps_summary">Hide the app from recent tasks when running in background</string>
+
+    <string name="title_pref_confirm_remove">Delete configuration file confirmation</string>
+    <string name="summary_pref_confirm_remove">Whether to delete the configuration file requires a second confirmation by the user</string>
     
     <!-- uwu -->
     <string name="uwu_about_miku_summary">Hatsune Miku is a Vocaloid-based virtual singer released by Crypton Future Media, code-named CV01. Known for her long turquoise twintails and clear voice, she is a 16-year-old girl and a globally renowned virtual idol. She is active in music, concerts, and anime, and is deeply loved by her fans.</string>

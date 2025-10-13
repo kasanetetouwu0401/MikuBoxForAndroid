@@ -115,6 +115,8 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.zip.ZipInputStream
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
 
 class ConfigurationFragment @JvmOverloads constructor(
     val select: Boolean = false, val selectedItem: ProxyEntity? = null, val titleRes: Int = 0
@@ -1605,10 +1607,22 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
 
                 removeButton.setOnClickListener {
-                    adapter?.let {
-                        val index = it.configurationIdList.indexOf(proxyEntity.id)
-                        it.remove(index)
-                        undoManager.remove(index to proxyEntity)
+                    adapter?.let { adapter ->
+                        val index = adapter.configurationIdList.indexOf(proxyEntity.id)
+                        if (DataStore.confirmProfileDelete) {
+                            AlertDialog.Builder(requireContext())
+                                .setTitle(R.string.delete_confirm_prompt)
+                                // .setMessage(getString(R.string.delete_confirm_prompt))
+                                .setPositiveButton(R.string.yes) { dialog: DialogInterface, which: Int ->
+                                    adapter.remove(index)
+                                    undoManager.remove(index to proxyEntity)
+                                }
+                                .setNegativeButton(R.string.no, null)
+                                .show()
+                        } else {
+                            adapter.remove(index)
+                            undoManager.remove(index to proxyEntity)
+                        }
                     }
                 }
 
