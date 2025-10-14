@@ -196,6 +196,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             }.show()
             true
         }
+        
         // Assign reload listeners
         mixedPort.onPreferenceChangeListener = reloadListener
         findPreference<SwitchPreference>(Key.APPEND_HTTP_PROXY)!!.onPreferenceChangeListener = reloadListener
@@ -213,6 +214,15 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         findPreference<SwitchPreference>(Key.RESOLVE_DESTINATION)!!.onPreferenceChangeListener = reloadListener
         findPreference<SimpleMenuPreference>(Key.TUN_IMPLEMENTATION)!!.onPreferenceChangeListener = reloadListener
         findPreference<SwitchPreference>(Key.ACQUIRE_WAKE_LOCK)!!.onPreferenceChangeListener = reloadListener
+        findPreference<SimpleMenuPreference>("fab_style")!!.setOnPreferenceChangeListener { _, _ ->
+            requireActivity().apply {
+                this.finish()
+                startActivity(intent)
+            }
+            true
+        }
+
+        // Fixed placement — keep this inside the function
         globalCustomConfig.onPreferenceChangeListener = reloadListener
     }
 

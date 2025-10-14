@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="fab_style_entry">
+        <item>@string/end</item>
+        <item>@string/center</item>
+    </string-array>
+    
     <string-array name="language_entry">
         <item>@string/language_system_default</item>
         <item>@string/language_en_display_name</item>

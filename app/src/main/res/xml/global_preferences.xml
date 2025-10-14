@@ -444,6 +444,16 @@
             app:key="showBottomBar"
             app:title="@string/show_bottom_bar" />
 
+        <com.takisoft.preferencex.SimpleMenuPreference
+            android:layout="@layout/uwu_mid"
+            app:defaultValue="1"
+            app:entries="@array/fab_style_entry"
+            app:entryValues="@array/int_array_2"
+            app:icon="@drawable/ic_service_busy"
+            app:key="fab_style"
+            app:title="@string/fab_style"
+            app:useSimpleSummaryProvider="true" />
+
         <Preference
             android:layout="@layout/uwu_bot"
             app:icon="@drawable/ic_action_delete"

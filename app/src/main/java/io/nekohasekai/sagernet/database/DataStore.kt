@@ -123,6 +123,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var logLevel by configurationStore.stringToInt(Key.LOG_LEVEL)
     var logBufSize by configurationStore.int(Key.LOG_BUF_SIZE) { 0 }
     var acquireWakeLock by configurationStore.boolean(Key.ACQUIRE_WAKE_LOCK)
+    var fabStyle by configurationStore.stringToInt("fab_style") { 1 }
     var hideFromRecentApps by configurationStore.boolean("hide_from_recent_apps")
     
     var rulesGeositeUrl by configurationStore.string("rules_geosite_url") { "https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db" }

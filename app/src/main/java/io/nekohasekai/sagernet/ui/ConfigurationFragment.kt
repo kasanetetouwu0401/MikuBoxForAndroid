@@ -656,19 +656,19 @@ class ConfigurationFragment @JvmOverloads constructor(
 
                     1 -> {
                         profileStatusText = getString(R.string.available, profile.ping)
-                        profileStatusColor = context.getColour(R.color.material_green_500)
+                        profileStatusColor = context.getColour(R.color.profile_ping_available)
                     }
 
                     2 -> {
                         profileStatusText = profile.error
-                        profileStatusColor = context.getColour(R.color.material_red_500)
+                        profileStatusColor = context.getColour(R.color.profile_ping_unavailable)
                     }
 
                     3 -> {
                         val err = profile.error ?: ""
                         val msg = Protocols.genFriendlyMsg(err)
                         profileStatusText = if (msg != err) msg else getString(R.string.unavailable)
-                        profileStatusColor = context.getColour(R.color.material_red_500)
+                        profileStatusColor = context.getColour(R.color.profile_ping_unavailable)
                     }
                 }
 
@@ -1579,9 +1579,9 @@ class ConfigurationFragment @JvmOverloads constructor(
                     }
                 } else if (proxyEntity.status == 1) {
                     profileStatus.text = getString(R.string.available, proxyEntity.ping)
-                    profileStatus.setTextColor(requireContext().getColour(R.color.material_green_500))
+                    profileStatus.setTextColor(requireContext().getColour(R.color.profile_ping_available))
                 } else {
-                    profileStatus.setTextColor(requireContext().getColour(R.color.material_red_500))
+                    profileStatus.setTextColor(requireContext().getColour(R.color.profile_ping_unavailable))
                     if (proxyEntity.status == 2) {
                         profileStatus.text = proxyEntity.error
                     }

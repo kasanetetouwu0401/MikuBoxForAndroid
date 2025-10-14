@@ -40,19 +40,17 @@ import io.nekohasekai.sagernet.fmt.KryoConverters
 import io.nekohasekai.sagernet.fmt.PluginEntry
 import io.nekohasekai.sagernet.group.GroupInterfaceAdapter
 import io.nekohasekai.sagernet.group.GroupUpdater
-import io.nekohasekai.sagernet.ktx.alert
-import io.nekohasekai.sagernet.ktx.isPlay
-import io.nekohasekai.sagernet.ktx.isPreview
-import io.nekohasekai.sagernet.ktx.launchCustomTab
-import io.nekohasekai.sagernet.ktx.onMainDispatcher
-import io.nekohasekai.sagernet.ktx.parseProxies
-import io.nekohasekai.sagernet.ktx.readableMessage
-import io.nekohasekai.sagernet.ktx.runOnDefaultDispatcher
 import moe.matsuri.nb4a.utils.Util
 import io.nekohasekai.sagernet.ui.MessageStore
-import io.nekohasekai.sagernet.ktx.Logs
 import android.app.ActivityManager
 import android.content.Context
+import com.google.android.material.bottomappbar.BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+import com.google.android.material.bottomappbar.BottomAppBar.FAB_ALIGNMENT_MODE_END
+import io.nekohasekai.sagernet.ktx.*
+import io.nekohasekai.sagernet.*
+import android.view.View
+import androidx.core.view.ViewCompat
+import io.nekohasekai.sagernet.widget.FabStyle
 
 class MainActivity : ThemedActivity(),
     SagerConnection.Callback,
@@ -66,6 +64,21 @@ class MainActivity : ThemedActivity(),
         super.onCreate(savedInstanceState)
 
         binding = LayoutMainBinding.inflate(layoutInflater)
+        when (DataStore.fabStyle) {
+            FabStyle.End -> {
+                binding.stats.fabAlignmentMode = FAB_ALIGNMENT_MODE_END
+                binding.stats.fabCradleMargin = dp2px(5).toFloat()
+                binding.stats.fabCradleRoundedCornerRadius = dp2px(6).toFloat()
+                binding.stats.cradleVerticalOffset = 0F
+            }
+            FabStyle.Center -> {
+                binding.stats.fabAlignmentMode = FAB_ALIGNMENT_MODE_CENTER
+                binding.stats.fabCradleMargin = dp2px(5).toFloat()
+                binding.stats.fabCradleRoundedCornerRadius = dp2px(6).toFloat()
+                binding.stats.cradleVerticalOffset = 0F
+            }
+        }
+        
         binding.fab.initProgress(binding.fabProgress)
         navigation = binding.navView;
         navigation.setNavigationItemSelectedListener(this);
