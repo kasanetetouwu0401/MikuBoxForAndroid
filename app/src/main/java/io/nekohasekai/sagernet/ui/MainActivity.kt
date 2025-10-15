@@ -67,20 +67,11 @@ class MainActivity : ThemedActivity(),
 
         binding = LayoutMainBinding.inflate(layoutInflater)
         binding.fab.initProgress(binding.fabProgress)
-        if (themeResId !in intArrayOf(
-                R.style.Theme_SagerNet_Black
-            )
-        ) {
-            navigation = binding.navView
-            binding.drawerLayout.removeView(binding.navViewBlack)
-        } else {
-            navigation = binding.navViewBlack
-            binding.drawerLayout.removeView(binding.navView)
-        }
-        navigation.setNavigationItemSelectedListener(this)
+        navigation = binding.navView;
+        navigation.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
-            displayFragmentWithId(R.id.nav_configuration)
+            displayFragmentWithId(R.id.nav_configuration);
         }
         onBackPressedDispatcher.addCallback {
             if (supportFragmentManager.findFragmentById(R.id.fragment_holder) is ConfigurationFragment) {

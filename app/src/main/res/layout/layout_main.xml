@@ -309,14 +309,6 @@
                 android:layout_height="fill_parent"
                 app:menu="@menu/main_drawer_menu"
                 style="@style/AppTheme.Widget.Material3.NavigationView" />
-            <com.google.android.material.navigation.NavigationView
-                android:layout_gravity="start"
-                android:id="@+id/nav_view_black"
-                android:background="@drawable/uwu_bg_navigationview_2"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                app:menu="@menu/main_drawer_menu"
-                style="@style/AppTheme.Widget.Material3.NavigationView" />
         </LinearLayout>
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
