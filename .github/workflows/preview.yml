@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
   push:
     if: github.actor == 'HSSkyBoy'
-    branches:
-      - main
 
 jobs:
   libcore:
