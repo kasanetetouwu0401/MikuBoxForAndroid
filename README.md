@@ -16,10 +16,17 @@ An Android universal proxy toolchain powered by **sing-box**.
 A preview of MikuBox themes.  
 *MikuBox 主題預覽*
 
-| Light Theme | Night Theme |
-| :---: | :---: |
-| ![Screenshot1](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_1.png) | ![Screenshot3](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_3.png) |
-| ![Screenshot2](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_2.png) | ![Screenshot4](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_4.png) |
+### **Light Theme**
+
+![Screenshot1](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_1.png)
+
+![Screenshot2](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_2.png)
+
+### **Night Theme**
+
+![Screenshot3](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_3.png)
+
+![Screenshot4](https://raw.githubusercontent.com/HatsuneMikuUwU/MikuBoxForAndroid/main/image/uwu_screenshot_4.png)
 
 ---
 
