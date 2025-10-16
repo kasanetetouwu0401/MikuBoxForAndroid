@@ -205,7 +205,7 @@
     <string name="chain_settings">链设置</string>
     <string name="circular_reference">循环引用</string>
     <string name="circular_reference_sum">路由中不能包含自己.</string>
-    <string name="mux_sum">多路复用是为了减少 TCP 的握手延迟而设计, 而非提高连接的吞吐量. 用于看视频、下载或者测速通常都有反效果。如果服务器不支持，则无法上网。</string>
+    <string name="mux_sum">多路复用是为了减少 TCP 的握手延迟而设计, 而非提高连接的吞吐量. 用于看视频、下载或者测速通常都有反效果。如果服务器不支持, 则无法上网。</string>
     <string name="tcp_keep_alive_interval">TCP 保持活跃数据包发送间隔</string>
     <string name="route_add">新建路由规则</string>
     <string name="delete_route_prompt">您确定要移除此路由吗\?</string>
@@ -213,7 +213,7 @@
     <string name="route_profile">选择配置…</string>
     <string name="empty_route">空路由</string>
     <string name="empty_route_notice">在保存前设置一些规则</string>
-    <string name="route_warn">在添加自定义规则之前，请确保您已经阅读了文档，否则您将可能无法连接到互联网。</string>
+    <string name="route_warn">在添加自定义规则之前, 请确保您已经阅读了文档, 否则您将可能无法连接到互联网。</string>
     <string name="route_bypass_domain">%s 域名规则</string>
     <string name="route_bypass_ip">%s IP 规则</string>
     <string name="no_proxies_found_in_file">未在此文件内找到服务器配置</string>
@@ -356,7 +356,7 @@
     <string name="group_order_by_name">以名称</string>
     <string name="group_order_by_delay">以延时</string>
     <string name="plugin_exists_but_on_shit_system" formatted="false">配置 %s 需要插件
-        %s，但你的专有设备供应商（通常也是监视资本主义巨头和恶意软件制造商）篡改了你的安卓系统，使该插件无法使用。</string>
+        %s, 但你的专有设备供应商（通常也是监视资本主义巨头和恶意软件制造商）篡改了你的安卓系统, 使该插件无法使用。</string>
     <string name="shadowsocks_plugin_v2ray">V2Ray （Shadowsocks Android 插件）</string>
     <string name="shadowsocks_plugin_simple_obfs">Simple Obfs （Shadowsocks Android 插件）</string>
     <string name="menu_traffic">流量</string>
@@ -372,7 +372,7 @@
     <string name="copy_label">复制应用名</string>
     <string name="udp_connections">%d UDP 连接</string>
     <string name="tcp_connections">%d TCP 连接</string>
-    <string name="route_need_vpn">路由规则 %s 依赖 VPN 以生效，所以其已被忽略。</string>
+    <string name="route_need_vpn">路由规则 %s 依赖 VPN 以生效, 所以其已被忽略。</string>
     <string name="no_statistics">暂无数据</string>
     <string name="ssh_private_key_passphrase">私钥密码句</string>
     <string name="ssh_private_key">私钥</string>
@@ -404,16 +404,16 @@
     <string name="route_play_store">%s Play 商店规则</string>
     <string name="route_opt_block_analysis">屏蔽跟踪器</string>
     <string name="naive_insecure_concurrency">不安全并发</string>
-    <string name="naive_insecure_concurrency_summary">使用N个并发的隧道连接，在恶劣的网络条件下更加强大。更多的连接使隧道更容易被发现，安全性更低。这个项目力求对流量分析有最强的安全性。以不安全的方式使用它就违背了它的目的。
+    <string name="naive_insecure_concurrency_summary">使用N个并发的隧道连接, 在恶劣的网络条件下更加强大。更多的连接使隧道更容易被发现, 安全性更低。这个项目力求对流量分析有最强的安全性。以不安全的方式使用它就违背了它的目的。
         \n
-        \n如果你必须使用它，先试试N=2，看看是否能解决你的问题。强烈建议不要在这里使用超过4个连接。</string>
+        \n如果你必须使用它, 先试试N=2, 看看是否能解决你的问题。强烈建议不要在这里使用超过4个连接。</string>
     <string name="tools_network">网络</string>
     <string name="backup">备份</string>
     <string name="backup_groups_and_configurations">分组和配置</string>
     <string name="backup_import">导入</string>
-    <string name="backup_summary">如果路由规则与配置一起备份，则自定义出站将丢失。</string>
+    <string name="backup_summary">如果路由规则与配置一起备份, 则自定义出站将丢失。</string>
     <string name="backup_settings">设置</string>
-    <string name="backup_not_file">不是一个备份文件，预期 .json，但 %s</string>
+    <string name="backup_not_file">不是一个备份文件, 预期 .json, 但 %s</string>
     <string name="backup_rules">路由规则</string>
     <string name="nat_result_hint">NAT 测试结果</string>
     <string name="nat_stun_server_hint">Stun 服务器</string>
@@ -422,8 +422,8 @@
     <string name="backup_importing">正导入…</string>
     <string name="action_copy">复制</string>
     <string name="action_open">打开</string>
-    <string name="please_update" formatted="false">您的 APP (%s) 太旧了喵，%s 再不更新就没的用了喵～</string>
-    <string name="please_update_force" formatted="false">您的 APP (%s) 版本过旧，已于 %s 停止工作，请立即升级。</string>
+    <string name="please_update" formatted="false">您的 APP (%s) 太旧了喵, %s 再不更新就没的用了喵～</string>
+    <string name="please_update_force" formatted="false">您的 APP (%s) 版本过旧, 已于 %s 停止工作, 请立即升级。</string>
     <string name="connection_test_delete_unavailable">清理不可用配置</string>
     <string name="packet_encoding">包编码</string>
     <string name="action_switch">切换</string>
@@ -473,7 +473,7 @@
     <string name="sniff_override">探测结果用于目标地址</string>
     <string name="resolve_server">根据 IPv6 策略解析服务器地址</string>
     <string name="auto_select_proxy_apps">自动选择需要代理的应用</string>
-    <string name="auto_select_proxy_apps_message">自动选择需要代理的应用，这将清除您当前的选择。</string>
+    <string name="auto_select_proxy_apps_message">自动选择需要代理的应用, 这将清除您当前的选择。</string>
     <string name="enable_ech">启用 ECH 技术支持</string>
     <string name="enable_ech_sum">启用 ECH</string>
     <string name="ech_settings">ECH 设置</string>
@@ -486,46 +486,50 @@
     <string name="global_allow_insecure">总是跳过 TLS 证书验证</string>
     <string name="network_change_reset_connections">当网络发生变化时重置出站连接</string>
     <string name="wake_reset_connections">当设备从睡眠状态唤醒时重置出站连接</string>
-    <string name="preview_version_hint">本应用为预览版，可能存在诸多问题。若您不愿参与测试，请前往GitHub下载正式发布版本！</string>
+    <string name="preview_version_hint">本应用为预览版, 可能存在诸多问题。若您不愿参与测试, 请前往GitHub下载正式发布版本！</string>
     <string name="check_update_preview">检查预览版更新</string>
     <string name="check_update_release">检查正式版更新</string>
     <string name="update_dialog_title">发现新版本</string>
     <string name="update_dialog_message">当前版本：%1$s\n可升级版本：%2$s\n是否前往下载？</string>
-    <string name="check_update_no">检查成功，但没有更新。</string>
+    <string name="check_update_no">检查成功, 但没有更新。</string>
     <string name="reset_settings">恢复默认设置</string>
-    <string name="reset_settings_message">恢复默认设置，但节点、分组等数据将保留。如需完全清除数据，请在系统设置中直接清除应用数据。</string>
+    <string name="reset_settings_message">恢复默认设置, 但节点、分组等数据将保留。如需完全清除数据, 请在系统设置中直接清除应用数据。</string>
     <string name="minimize">最小化</string>
     <string name="donate_to_original_author">向原作者捐款</string>
 
     <string name="language">语言</string>
-    <string name="language_system_default">系统默认设置</string>
+    <string name="language_system_default">系统默认</string>
 
     <string name="clear_cache">清除缓存</string>
     <string name="clear_cache_confirm">您确定要清除缓存吗？</string>
     <string name="clear_cache_failed">清除缓存失败: %s</string>
-    <string name="clear_cache_success">已清除缓存</string>
-    <string name="clear_cache_summary">清除应用程序缓存文件以修复一些异常问题</string>
+    <string name="clear_cache_success">缓存已清除</string>
+    <string name="clear_cache_summary">清除应用缓存文件以解决一些问题</string>
 
-    <string name="custom_rules_provider">风俗</string>
+    <string name="custom_rules_provider">自定义规则</string>
 
-    <string name="hide_from_recent_apps">隐藏最近任务</string>
-    <string name="hide_from_recent_apps_summary">在后台运行时隐藏应用程序的最近任务</string>
+    <string name="hide_from_recent_apps">隐藏最近任务列表</string>
+    <string name="hide_from_recent_apps_summary">在后台运行时, 将应用从最近任务列表隐藏</string>
 
     <string name="title_pref_confirm_remove">删除配置文件确认</string>
-    <string name="summary_pref_confirm_remove">是否删除配置文件需要用户二次确认</string>
+    <string name="summary_pref_confirm_remove">删除配置文件时需要用户再次确认</string>
+
+    <string name="fab_style">悬浮按钮样式</string>
+    <string name="end">末尾</string>
+    <string name="center">居中</string>
     
     <!-- uwu -->
-    <string name="uwu_about_miku_summary">初音未来(Hatsune Miku) 是 Crypton Future Media 发布的基于 Vocaloid 制作的虚拟歌手，代号CV01。以青绿色的长双马尾和清亮嗓音著称，人设为16岁少女，是全球知名虚拟偶像，广泛活跃于音乐、演唱会及动画，深受粉丝们喜爱。</string>
+    <string name="uwu_about_miku_summary">初音未来(Hatsune Miku) 是 Crypton Future Media 发布的基于 Vocaloid 制作的虚拟歌手, 代号CV01。以青绿色的长双马尾和清亮嗓音著称, 人设为16岁少女, 是全球知名虚拟偶像, 广泛活跃于音乐、演唱会及动画, 深受粉丝们喜爱。</string>
     <string name="uwu_about_miku_title">谁是 Hatsune Miku?</string>
-    <string name="uwu_about_version_summary">点击此处或箭头图标，了解应用更多信息。</string>
+    <string name="uwu_about_version_summary">点击此处或箭头图标, 了解应用更多信息。</string>
     <string name="uwu_about_version_title">关于应用</string>
-    <string name="uwu_banner_settings_summary">"欢迎来到设置菜单，
+    <string name="uwu_banner_settings_summary">"欢迎来到设置菜单, 
 请选择任何你
 需要的和必须
 的功能选项"</string>
     <string name="uwu_banner_settings_title">你好呀……</string>
     <string name="uwu_banner_summary">来和我一起唱歌吧！</string>
-    <string name="uwu_banner_title">嗨，主人</string>
+    <string name="uwu_banner_title">嗨, 主人</string>
     <string name="uwu_general_settings_title">通用设置</string>
     <string name="uwu_maintainer_summary">HatsuneMikuUwU 开发团队</string>
     <string name="uwu_maintainer_title">本应用由以下团队维护</string>
