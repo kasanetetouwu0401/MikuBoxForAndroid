@@ -2,8 +2,6 @@ name: Preview Build
 
 on:
   workflow_dispatch:
-  push:
-    if: github.actor == 'HSSkyBoy'
 
 jobs:
   libcore:
