@@ -20,6 +20,7 @@ import io.nekohasekai.sagernet.ktx.string
 import io.nekohasekai.sagernet.ktx.stringToInt
 import io.nekohasekai.sagernet.ktx.stringToIntIfExists
 import moe.matsuri.nb4a.TempDatabase
+import io.nekohasekai.sagernet.utils.Theme
 
 object DataStore : OnPreferenceDataStoreChangeListener {
 
@@ -83,6 +84,10 @@ object DataStore : OnPreferenceDataStoreChangeListener {
         val groups = SagerDatabase.groupDao.allGroups()
         return groups.find { it.type == GroupType.BASIC }!!.id
     }
+
+    var lastAppTheme: Int
+    get() = configurationStore.getInt("last_app_theme", Theme.TEAL)
+    set(value) = configurationStore.putInt("last_app_theme", value)
 
     var appTLSVersion by configurationStore.string(Key.APP_TLS_VERSION)
     var enableClashAPI by configurationStore.boolean(Key.ENABLE_CLASH_API)
