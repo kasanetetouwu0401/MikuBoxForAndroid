@@ -3,9 +3,7 @@
     <string name="update">Update</string>
     <string name="release">Release</string>
     <string name="preview">Preview</string>
-    <string name="check_update_no">Check successful, but no updates.</string>
-    <string name="check_update_preview">Check for preview version updates</string>
-    <string name="check_update_release">Check for release version updates</string>
+    
     <string name="app_name" translatable="false">MikuBox</string>
     <string name="app_name_long" translatable="false">MikuBox for Android</string>
     <string name="app_desc">The universal proxy toolchain for Android, written in Kotlin.</string>
