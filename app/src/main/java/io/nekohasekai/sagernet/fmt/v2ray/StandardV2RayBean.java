@@ -48,6 +48,11 @@ public abstract class StandardV2RayBean extends AbstractBean {
 
     public String certificates;
 
+    // --------------------------------------- xhttp
+
+    public String xhttpMode;
+    public String xhttpExtra;
+
     // --------------------------------------- ech
 
     public Boolean enableECH;
@@ -108,11 +113,14 @@ public abstract class StandardV2RayBean extends AbstractBean {
         if (muxPadding == null) muxPadding = false;
         if (muxType == null) muxType = 0;
         if (muxConcurrency == null) muxConcurrency = 1;
+
+        if (JavaUtil.isNullOrBlank(xhttpMode)) xhttpMode = "auto";
+        if (JavaUtil.isNullOrBlank(xhttpExtra)) xhttpExtra = "";
     }
 
     @Override
     public void serialize(ByteBufferOutput output) {
-        output.writeInt(3);
+        output.writeInt(4);
         super.serialize(output);
         output.writeString(uuid);
         output.writeString(encryption);
@@ -144,7 +152,13 @@ public abstract class StandardV2RayBean extends AbstractBean {
             case "httpupgrade": {
                 output.writeString(host);
                 output.writeString(path);
-
+            }
+            case "xhttp": {
+                output.writeString(host);
+                output.writeString(path);
+                output.writeString(xhttpMode);
+                output.writeString(xhttpExtra);
+                break;
             }
         }
 
@@ -204,6 +218,16 @@ public abstract class StandardV2RayBean extends AbstractBean {
             case "httpupgrade": {
                 host = input.readString();
                 path = input.readString();
+                break;
+            }
+            case "xhttp": {
+                host = input.readString();
+                path = input.readString();
+                if (version >= 4) {
+                    xhttpMode = input.readString();
+                    xhttpExtra = input.readString();
+                }
+                break;
             }
         }
 
