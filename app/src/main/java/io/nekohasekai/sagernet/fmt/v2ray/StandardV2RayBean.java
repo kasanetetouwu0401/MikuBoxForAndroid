@@ -14,7 +14,7 @@ public abstract class StandardV2RayBean extends AbstractBean {
 
     //////// End of VMess & VLESS ////////
 
-    // "V2Ray Transport" tcp/http/ws/quic/grpc/httpupgrade
+    // "V2Ray Transport" tcp/http/ws/quic/grpc/httpupgrade/xhttp
     public String type;
 
     public String host;
@@ -120,7 +120,7 @@ public abstract class StandardV2RayBean extends AbstractBean {
 
     @Override
     public void serialize(ByteBufferOutput output) {
-        output.writeInt(4);
+        output.writeInt(5);
         super.serialize(output);
         output.writeString(uuid);
         output.writeString(encryption);
@@ -141,17 +141,15 @@ public abstract class StandardV2RayBean extends AbstractBean {
                 output.writeString(earlyDataHeaderName);
                 break;
             }
-            case "http": {
+            case "http":
+            case "httpupgrade": {
                 output.writeString(host);
                 output.writeString(path);
                 break;
             }
             case "grpc": {
                 output.writeString(path);
-            }
-            case "httpupgrade": {
-                output.writeString(host);
-                output.writeString(path);
+                break;
             }
             case "xhttp": {
                 output.writeString(host);
@@ -207,23 +205,25 @@ public abstract class StandardV2RayBean extends AbstractBean {
                 earlyDataHeaderName = input.readString();
                 break;
             }
-            case "http": {
+            case "http":
+            case "httpupgrade": {
                 host = input.readString();
                 path = input.readString();
                 break;
             }
             case "grpc": {
                 path = input.readString();
-            }
-            case "httpupgrade": {
-                host = input.readString();
-                path = input.readString();
+                if (version < 4) {
+                    // Solve the problem of reading old version data
+                    input.readString();
+                    input.readString();
+                }
                 break;
             }
             case "xhttp": {
                 host = input.readString();
                 path = input.readString();
-                if (version >= 4) {
+                if (version >= 5) {
                     xhttpMode = input.readString();
                     xhttpExtra = input.readString();
                 }
