@@ -117,16 +117,19 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/uwu_banner_title"
                                 android:singleLine="false" />
-                            <TextView
+                            <com.neko.marquee.text.RandomText
                                 android:textAppearance="@style/TextAppearance.M3.Sys.Typescale.TitleMedium"
                                 android:textSize="17.0sp"
                                 android:textColor="@android:color/white"
                                 android:ellipsize="marquee"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/uwu_banner_summary"
+                                uwu_runnable="false"
                                 android:singleLine="true"
                                 android:marqueeRepeatLimit="marquee_forever" />
+                                <!-- uwu_runnable = true / false -->
+                                <!-- true = auto change every second -->
+                                <!-- false = change when entering and exiting -->
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>

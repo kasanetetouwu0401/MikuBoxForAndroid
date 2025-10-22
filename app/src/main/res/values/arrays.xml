@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="uwu_random_text">
+    	<item>@string/uwu_banner_summary</item>
+        <item>@string/uwu_banner_summary_1</item>
+        <item>@string/uwu_banner_summary_2</item>
+        <item>@string/uwu_banner_summary_3</item>
+        <item>@string/uwu_banner_summary_4</item>
+        <item>@string/uwu_banner_summary_5</item>
+        <item>@string/uwu_banner_summary_6</item>
+        <item>@string/uwu_banner_summary_7</item>
+        <item>@string/uwu_banner_summary_8</item>
+        <item>@string/uwu_banner_summary_9</item>
+        <item>@string/uwu_banner_summary_10</item>
+    </string-array>
+
     <string-array name="fab_style_entry">
         <item>@string/end</item>
         <item>@string/center</item>
