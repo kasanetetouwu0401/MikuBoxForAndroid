@@ -1,0 +1,59 @@
+package com.neko.marquee.text;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.util.AttributeSet;
+import com.neko.marquee.text.AutoMarqueeTextView;
+
+import java.util.Random;
+
+public class RandomText extends AutoMarqueeTextView implements Runnable {
+
+    private Handler handler;
+    private boolean runnable;
+
+    public RandomText(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        handler = new Handler();
+
+        // Get the boolean attribute "uwu_runnable" from XML
+        // If not present, default = true
+        runnable = attrs.getAttributeBooleanValue(null, "uwu_runnable", true);
+
+        if (runnable) {
+            run();
+        } else {
+            setRandomText();
+        }
+    }
+
+    @Override
+    public void run() {
+        setRandomText();
+        // Rerun every 3000 ms (0xbb8 in hexadecimal = 3000)
+        handler.postDelayed(this, 3000);
+    }
+
+    private void setRandomText() {
+        Resources res = getResources();
+        Context context = getContext();
+        String packageName = context.getPackageName();
+
+        // Get an array resource named "uwu_random_text"
+        int id = res.getIdentifier("array/uwu_random_text", null, packageName);
+        if (id == 0) {
+            return; // If not found, exit
+        }
+
+        String[] texts = res.getStringArray(id);
+        if (texts.length == 0) {
+            return;
+        }
+
+        Random random = new Random();
+        int index = random.nextInt(texts.length - 1);
+        setText(texts[index]);
+    }
+}
