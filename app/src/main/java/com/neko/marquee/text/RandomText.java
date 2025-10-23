@@ -5,10 +5,11 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
+import com.neko.marquee.text.AutoMarqueeTextView;
 
 import java.util.Random;
 
-public class RandomText extends AppCompatTextView implements Runnable {
+public class RandomText extends AutoMarqueeTextView implements Runnable {
 
     private final Handler handler;
     private final boolean runnable;
