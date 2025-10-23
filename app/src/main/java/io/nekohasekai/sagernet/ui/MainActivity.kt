@@ -46,6 +46,9 @@ import android.app.ActivityManager
 import android.content.Context
 import com.google.android.material.bottomappbar.BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
 import com.google.android.material.bottomappbar.BottomAppBar.FAB_ALIGNMENT_MODE_END
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 import io.nekohasekai.sagernet.ktx.*
 import io.nekohasekai.sagernet.*
 import android.view.View
@@ -77,6 +80,17 @@ class MainActivity : ThemedActivity(),
                 binding.stats.fabCradleRoundedCornerRadius = dp2px(6).toFloat()
                 binding.stats.cradleVerticalOffset = 0F
             }
+        }
+
+        (binding.stats.background as? MaterialShapeDrawable)?.let { barBackground ->
+            val radius = dp2px(28).toFloat()
+            val newShape = barBackground.shapeAppearanceModel
+                .toBuilder()
+                .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+                .setTopRightCorner(CornerFamily.ROUNDED, radius)
+                .build()
+            barBackground.shapeAppearanceModel = newShape
+            barBackground.elevation = 0f
         }
         
         binding.fab.initProgress(binding.fabProgress)
