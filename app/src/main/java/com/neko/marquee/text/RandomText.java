@@ -4,22 +4,29 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.util.AttributeSet;
-import com.neko.marquee.text.AutoMarqueeTextView;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import java.util.Random;
 
-public class RandomText extends AutoMarqueeTextView implements Runnable {
+public class RandomText extends AppCompatTextView implements Runnable {
 
-    private Handler handler;
-    private boolean runnable;
+    private final AutoMarqueeTextView marqueeTextView;
+    private final Handler handler;
+    private final boolean runnable;
 
     public RandomText(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+        // Create an instance of AutoMarqueeTextView (composition)
+        marqueeTextView = new AutoMarqueeTextView(context, attrs);
+        addView(marqueeTextView, new LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                LayoutParams.WRAP_CONTENT
+        ));
+
         handler = new Handler();
 
-        // Get the boolean attribute "uwu_runnable" from XML
-        // If not present, default = true
+        // Get "uwu_runnable" attribute from XML (default = true)
         runnable = attrs.getAttributeBooleanValue(null, "uwu_runnable", true);
 
         if (runnable) {
@@ -42,7 +49,7 @@ public class RandomText extends AutoMarqueeTextView implements Runnable {
         String packageName = context.getPackageName();
 
         // Get an array resource named "uwu_random_text"
-        int id = res.getIdentifier("array/uwu_random_text", null, packageName);
+        int id = res.getIdentifier("array/uwu_random_text", "array", packageName);
         if (id == 0) {
             return; // If not found, exit
         }
@@ -53,7 +60,16 @@ public class RandomText extends AutoMarqueeTextView implements Runnable {
         }
 
         Random random = new Random();
-        int index = random.nextInt(texts.length - 1);
-        setText(texts[index]);
+        int index = random.nextInt(texts.length);
+        marqueeTextView.setText(texts[index]);
+    }
+
+    // Additional methods to be able to use it like a normal TextView
+    public void setText(CharSequence text) {
+        marqueeTextView.setText(text);
+    }
+
+    public CharSequence getText() {
+        return marqueeTextView.getText();
     }
 }
