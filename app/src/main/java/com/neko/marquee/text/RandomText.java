@@ -5,11 +5,11 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
-import com.neko.marquee.text.AutoMarqueeTextView;
+import android.text.TextUtils;
 
 import java.util.Random;
 
-public class RandomText extends AutoMarqueeTextView implements Runnable {
+public class RandomText extends AppCompatTextView implements Runnable {
 
     private final Handler handler;
     private final boolean runnable;
@@ -18,9 +18,14 @@ public class RandomText extends AutoMarqueeTextView implements Runnable {
         super(context, attrs);
 
         handler = new Handler();
-
-        // Ambil atribut "uwu_runnable" dari XML (default = true)
         runnable = attrs.getAttributeBooleanValue(null, "uwu_runnable", true);
+
+        // Aktifkan marquee (teks berjalan)
+        setSingleLine(true);
+        setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        setMarqueeRepeatLimit(-1); // -1 = infinite
+        setHorizontallyScrolling(true);
+        setSelected(true); // Wajib agar marquee bisa berjalan
 
         if (runnable) {
             run();
@@ -32,8 +37,7 @@ public class RandomText extends AutoMarqueeTextView implements Runnable {
     @Override
     public void run() {
         setRandomText();
-        // Jalankan ulang setiap 3000 ms (0xbb8 dalam heksadesimal = 3000)
-        handler.postDelayed(this, 3000);
+        handler.postDelayed(this, 3000); // ulang tiap 3 detik
     }
 
     private void setRandomText() {
@@ -41,10 +45,10 @@ public class RandomText extends AutoMarqueeTextView implements Runnable {
         Context context = getContext();
         String packageName = context.getPackageName();
 
-        // Ambil resource array bernama "uwu_random_text"
+        // Ambil resource array "uwu_random_text"
         int id = res.getIdentifier("array/uwu_random_text", "array", packageName);
         if (id == 0) {
-            return; // Jika tidak ditemukan, keluar
+            return;
         }
 
         String[] texts = res.getStringArray(id);
@@ -55,5 +59,8 @@ public class RandomText extends AutoMarqueeTextView implements Runnable {
         Random random = new Random();
         int index = random.nextInt(texts.length);
         setText(texts[index]);
+
+        // Pastikan tetap marquee setelah mengganti teks
+        setSelected(true);
     }
 }
