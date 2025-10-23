@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
+import com.neko.marquee.text.AutoMarqueeTextView;
+import android.widget.FrameLayout;
 
 import java.util.Random;
 
