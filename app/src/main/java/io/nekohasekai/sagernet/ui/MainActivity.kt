@@ -54,6 +54,7 @@ import io.nekohasekai.sagernet.*
 import android.view.View
 import androidx.core.view.ViewCompat
 import io.nekohasekai.sagernet.widget.FabStyle
+import com.airbnb.lottie.LottieAnimationView
 
 class MainActivity : ThemedActivity(),
     SagerConnection.Callback,
@@ -67,6 +68,23 @@ class MainActivity : ThemedActivity(),
         super.onCreate(savedInstanceState)
 
         binding = LayoutMainBinding.inflate(layoutInflater)
+
+        val lottieView: LottieAnimationView = binding.lottieWelcome
+        lottieView.visibility = View.VISIBLE
+        lottieView.playAnimation()
+        lottieView.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {}
+            override fun onAnimationEnd(animation: Animator?) {
+                lottieView.animate()
+                    .alpha(0f)
+                    .setDuration(500)
+                    .withEndAction { lottieView.visibility = View.GONE }
+                    .start()
+            }
+            override fun onAnimationCancel(animation: Animator?) {}
+            override fun onAnimationRepeat(animation: Animator?) {}
+        })
+        
         when (DataStore.fabStyle) {
             FabStyle.End -> {
                 binding.stats.fabAlignmentMode = FAB_ALIGNMENT_MODE_END
