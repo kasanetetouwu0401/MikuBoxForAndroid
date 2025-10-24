@@ -90,6 +90,18 @@
                     android:marqueeRepeatLimit="marquee_forever" />
             </LinearLayout>
         </io.nekohasekai.sagernet.widget.StatsBar>
+        <com.airbnb.lottie.LottieAnimationView
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:id="@+id/lottieWelcome"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dip"
+            android:layout_alignParentBottom="true"
+            app:layout_anchorGravity="bottom"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/uwu_lottie_love" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <LinearLayout
         android:layout_gravity="start"
