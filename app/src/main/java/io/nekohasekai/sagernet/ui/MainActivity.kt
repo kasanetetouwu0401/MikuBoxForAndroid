@@ -54,6 +54,8 @@ import io.nekohasekai.sagernet.*
 import android.view.View
 import androidx.core.view.ViewCompat
 import io.nekohasekai.sagernet.widget.FabStyle
+import com.airbnb.lottie.LottieAnimationView
+import android.animation.Animator
 
 class MainActivity : ThemedActivity(),
     SagerConnection.Callback,
@@ -116,6 +118,26 @@ class MainActivity : ThemedActivity(),
         binding.stats.setOnClickListener { if (DataStore.serviceState.connected) binding.stats.testConnection() }
 
         setContentView(binding.root)
+
+        val lottieView: LottieAnimationView = binding.lottieWelcome
+        lottieView.visibility = View.VISIBLE
+        lottieView.playAnimation()
+
+        lottieView.addAnimatorListener(object : android.animation.Animator.AnimatorListener {
+            override fun onAnimationStart(animation: android.animation.Animator) {}
+
+            override fun onAnimationEnd(animation: android.animation.Animator) {
+                lottieView.animate()
+                    .alpha(0f)
+                    .setDuration(900)
+                    .withEndAction { lottieView.visibility = View.GONE }
+                    .start()
+            }
+
+            override fun onAnimationCancel(animation: android.animation.Animator) {}
+            override fun onAnimationRepeat(animation: android.animation.Animator) {}
+        })
+        
         changeState(BaseService.State.Idle)
         connection.connect(this, this)
         DataStore.configurationStore.registerChangeListener(this)
