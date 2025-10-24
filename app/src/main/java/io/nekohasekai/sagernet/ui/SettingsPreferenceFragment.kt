@@ -34,6 +34,8 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import java.io.File
+import io.nekohasekai.sagernet.utils.blurBackground
+import io.nekohasekai.sagernet.utils.clearBlur
 
 class SettingsPreferenceFragment : PreferenceFragmentCompat() {
 
@@ -55,6 +57,19 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         preferenceManager.preferenceDataStore = DataStore.configurationStore
         DataStore.initGlobal()
         addPreferencesFromResource(R.xml.global_preferences)
+
+        override fun onDisplayPreferenceDialog(preference: Preference) {
+        activity?.blurBackground()
+
+        super.onDisplayPreferenceDialog(preference)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val dialog = (preference as? DialogPreference)?.dialog
+            dialog?.setOnDismissListener {
+                activity?.clearBlur()
+            }
+        }, 100)
+     }
 
         val appTheme = findPreference<ColorPickerPreference>(Key.APP_THEME)!!
         appTheme.setOnPreferenceChangeListener { _, newTheme ->
