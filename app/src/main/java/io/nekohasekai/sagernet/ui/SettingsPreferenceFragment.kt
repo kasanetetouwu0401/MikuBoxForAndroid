@@ -36,6 +36,8 @@ import android.widget.Toast
 import java.io.File
 import io.nekohasekai.sagernet.utils.blurBackground
 import io.nekohasekai.sagernet.utils.clearBlur
+import androidx.fragment.app.DialogFragment
+import android.content.DialogInterface
 
 class SettingsPreferenceFragment : PreferenceFragmentCompat() {
 
@@ -271,15 +273,31 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
-        activity?.blurBackground()
-        super.onDisplayPreferenceDialog(preference)
+    activity?.blurBackground()
 
+    super.onDisplayPreferenceDialog(preference)
+
+    val dlgFrag = parentFragmentManager.findFragmentByTag(
+        "androidx.preference.PreferenceFragment.DIALOG"
+    ) as? DialogFragment
+
+    dlgFrag?.dialog?.setOnDismissListener { _: DialogInterface? ->
+        activity?.clearBlur()
+    }
+
+    if (dlgFrag == null) {
         Handler(Looper.getMainLooper()).postDelayed({
-            dialog?.setOnDismissListener {
+            val df = parentFragmentManager.findFragmentByTag(
+                "androidx.preference.PreferenceFragment.DIALOG"
+            ) as? DialogFragment
+            df?.dialog?.setOnDismissListener { _: DialogInterface? ->
+                activity?.clearBlur()
+            } ?: run {
                 activity?.clearBlur()
             }
-        }, 100)
+        }, 150)
     }
+}
 
     override fun onResume() {
         super.onResume()
