@@ -14,12 +14,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
+import com.takisoft.preferencex.SimpleMenuPreference
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.utils.Theme
 import io.nekohasekai.sagernet.utils.blurBackground
 import io.nekohasekai.sagernet.utils.clearBlur
 
-abstract class ThemedActivity : AppCompatActivity {
+abstract class ThemedActivity : AppCompatActivity() {
     constructor() : super()
     constructor(contentLayoutId: Int) : super(contentLayoutId)
 
@@ -44,24 +45,29 @@ abstract class ThemedActivity : AppCompatActivity {
             }
         }
 
-        // Auto blur setiap kali dialog muncul
         setupDialogBlurListener()
     }
 
     private fun setupDialogBlurListener() {
         window.decorView.viewTreeObserver.addOnWindowFocusChangeListener { hasFocus ->
             if (!hasFocus && !isBlurred) {
-                // Blur cepat, muncul sebelum dialog sepenuhnya visible
+                // Cek apakah window aktif adalah SimpleMenuPreference / popup
+                val popupShowing = window.decorView.rootView?.let { root ->
+                    root.findViewById<View>(com.takisoft.preferencex.R.id.select_dialog_listview) != null
+                } ?: false
+
+                if (popupShowing) return@addOnWindowFocusChangeListener // skip blur untuk popup
+
+                // blur normal untuk dialog
                 handler.postDelayed({
                     blurBackground()
                     isBlurred = true
-                }, 50) // sedikit delay agar mulus (50ms saja)
+                }, 50)
             } else if (hasFocus && isBlurred) {
-                // Hapus blur dengan delay kecil agar transisi tidak kasar
                 handler.postDelayed({
                     clearBlur()
                     isBlurred = false
-                }, 120)
+                }, 100)
             }
         }
     }
