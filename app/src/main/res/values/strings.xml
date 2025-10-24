@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="hide">Hide</string>
     <string name="app_name" translatable="false">MikuBox</string>
     <string name="app_name_long" translatable="false">MikuBox for Android</string>
     <string name="app_desc">The universal proxy toolchain for Android, written in Kotlin.</string>
