@@ -68,22 +68,6 @@ class MainActivity : ThemedActivity(),
         super.onCreate(savedInstanceState)
 
         binding = LayoutMainBinding.inflate(layoutInflater)
-
-        val lottieView: LottieAnimationView = binding.lottieWelcome
-        lottieView.visibility = View.VISIBLE
-        lottieView.playAnimation()
-        lottieView.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator?) {}
-            override fun onAnimationEnd(animation: Animator?) {
-                lottieView.animate()
-                    .alpha(0f)
-                    .setDuration(500)
-                    .withEndAction { lottieView.visibility = View.GONE }
-                    .start()
-            }
-            override fun onAnimationCancel(animation: Animator?) {}
-            override fun onAnimationRepeat(animation: Animator?) {}
-        })
         
         when (DataStore.fabStyle) {
             FabStyle.End -> {
@@ -134,6 +118,21 @@ class MainActivity : ThemedActivity(),
         binding.stats.setOnClickListener { if (DataStore.serviceState.connected) binding.stats.testConnection() }
 
         setContentView(binding.root)
+
+        val lottieView: LottieAnimationView = binding.lottieWelcome
+        lottieView.visibility = View.VISIBLE
+        lottieView.playAnimation()
+
+        lottieView.addAnimatorListener(
+            onEnd = {
+                lottieView.animate()
+                    .alpha(0f)
+                    .setDuration(900)
+                    .withEndAction { lottieView.visibility = View.GONE }
+                    .start()
+            }
+        )
+        
         changeState(BaseService.State.Idle)
         connection.connect(this, this)
         DataStore.configurationStore.registerChangeListener(this)
