@@ -1,5 +1,6 @@
 package io.nekohasekai.sagernet.ui
 
+import android.app.Dialog
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -10,15 +11,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.utils.Theme
 import io.nekohasekai.sagernet.utils.blurBackground
 import io.nekohasekai.sagernet.utils.clearBlur
-import jp.wasabeef.blurry.Blurry
 
 abstract class ThemedActivity : AppCompatActivity {
     constructor() : super()
@@ -29,30 +27,37 @@ abstract class ThemedActivity : AppCompatActivity {
     open val isDialog = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (!isDialog) {
-            Theme.apply(this)
-        } else {
-            Theme.applyDialog(this)
-        }
+        if (!isDialog) Theme.apply(this) else Theme.applyDialog(this)
         Theme.applyNightTheme()
-
         super.onCreate(savedInstanceState)
-
         uiMode = resources.configuration.uiMode
 
-        // Atur padding atas untuk status bar di Android 14+
         if (Build.VERSION.SDK_INT >= 35) {
             ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { _, insets ->
                 val top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
-                findViewById<AppBarLayout>(R.id.appbar)?.apply {
-                    updatePadding(top = top)
-                }
+                findViewById<AppBarLayout>(R.id.appbar)?.updatePadding(top = top)
                 insets
             }
         }
 
-        // Aktifkan blur otomatis untuk semua dialog di Activity ini
-        enableGlobalDialogBlur()
+        // === Tambahan: otomatis blur setiap kali dialog muncul ===
+        registerActivityLifecycleCallbacks()
+    }
+
+    private fun registerActivityLifecycleCallbacks() {
+        window.decorView.viewTreeObserver.addOnWindowFocusChangeListener { hasFocus ->
+            if (!hasFocus) blurBackground()
+            else clearBlur()
+        }
+
+        // Deteksi semua dialog yang dibuat di activity ini
+        window.decorView.viewTreeObserver.addOnGlobalLayoutListener {
+            val dialogs = window.peekDecorView()?.rootView
+            if (dialogs is Dialog && dialogs.isShowing) {
+                blurBackground()
+                dialogs.setOnDismissListener { clearBlur() }
+            }
+        }
     }
 
     override fun setTheme(resId: Int) {
@@ -70,32 +75,9 @@ abstract class ThemedActivity : AppCompatActivity {
 
     fun snackbar(@StringRes resId: Int): Snackbar = snackbar("").setText(resId)
     fun snackbar(text: CharSequence): Snackbar = snackbarInternal(text).apply {
-        view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).apply {
-            maxLines = 10
-        }
+        view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).maxLines = 10
     }
 
-    internal open fun snackbarInternal(text: CharSequence): Snackbar = throw NotImplementedError()
-
-    // Tambahkan fungsi global blur listener
-    private fun enableGlobalDialogBlur() {
-        supportFragmentManager.registerFragmentLifecycleCallbacks(
-            object : FragmentManager.FragmentLifecycleCallbacks() {
-                override fun onFragmentViewCreated(
-                    fm: FragmentManager,
-                    f: androidx.fragment.app.Fragment,
-                    v: android.view.View,
-                    savedInstanceState: Bundle?
-                ) {
-                    if (f is DialogFragment) {
-                        blurBackground()
-                        f.dialog?.setOnDismissListener {
-                            clearBlur()
-                        }
-                    }
-                }
-            },
-            true
-        )
-    }
+    internal open fun snackbarInternal(text: CharSequence): Snackbar =
+        throw NotImplementedError()
 }
