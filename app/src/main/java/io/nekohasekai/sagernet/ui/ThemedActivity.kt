@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -20,13 +21,13 @@ import io.nekohasekai.sagernet.utils.Theme
 import io.nekohasekai.sagernet.utils.blurBackground
 import io.nekohasekai.sagernet.utils.clearBlur
 
-abstract class ThemedActivity : AppCompatActivity() {
-    constructor() : super()
-    constructor(contentLayoutId: Int) : super(contentLayoutId)
+abstract class ThemedActivity(
+    private val contentLayoutId: Int = 0,
+    open val isDialog: Boolean = false
+) : AppCompatActivity(if (contentLayoutId != 0) contentLayoutId else 0) {
 
     var themeResId = 0
     var uiMode = 0
-    open val isDialog = false
 
     private val handler = Handler(Looper.getMainLooper())
     private var isBlurred = false
@@ -51,23 +52,23 @@ abstract class ThemedActivity : AppCompatActivity() {
     private fun setupDialogBlurListener() {
         window.decorView.viewTreeObserver.addOnWindowFocusChangeListener { hasFocus ->
             if (!hasFocus && !isBlurred) {
-                // Cek apakah window aktif adalah SimpleMenuPreference / popup
-                val popupShowing = window.decorView.rootView?.let { root ->
-                    root.findViewById<View>(com.takisoft.preferencex.R.id.select_dialog_listview) != null
-                } ?: false
 
-                if (popupShowing) return@addOnWindowFocusChangeListener // skip blur untuk popup
+                // Cek apakah yang muncul adalah popup / SimpleMenuPreference
+                val skipBlur = window.decorView.rootView?.findViewById<View>(
+                    com.takisoft.preferencex.R.id.select_dialog_listview
+                ) != null
 
-                // blur normal untuk dialog
+                if (skipBlur) return@addOnWindowFocusChangeListener // skip blur untuk popup
+
                 handler.postDelayed({
                     blurBackground()
                     isBlurred = true
-                }, 50)
+                }, 50) // blur muncul cepat tapi halus
             } else if (hasFocus && isBlurred) {
                 handler.postDelayed({
                     clearBlur()
                     isBlurred = false
-                }, 100)
+                }, 100) // blur hilang halus
             }
         }
     }
