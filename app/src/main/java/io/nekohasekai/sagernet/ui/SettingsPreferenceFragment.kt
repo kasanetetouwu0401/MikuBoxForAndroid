@@ -58,19 +58,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         DataStore.initGlobal()
         addPreferencesFromResource(R.xml.global_preferences)
 
-        override fun onDisplayPreferenceDialog(preference: Preference) {
-        activity?.blurBackground()
-
-        super.onDisplayPreferenceDialog(preference)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            val dialog = (preference as? DialogPreference)?.dialog
-            dialog?.setOnDismissListener {
-                activity?.clearBlur()
-            }
-        }, 100)
-     }
-
         val appTheme = findPreference<ColorPickerPreference>(Key.APP_THEME)!!
         appTheme.setOnPreferenceChangeListener { _, newTheme ->
             if (DataStore.serviceState.started) {
@@ -281,6 +268,17 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
 
         // Fixed placement — keep this inside the function
         globalCustomConfig.onPreferenceChangeListener = reloadListener
+    }
+
+    override fun onDisplayPreferenceDialog(preference: Preference) {
+        activity?.blurBackground()
+        super.onDisplayPreferenceDialog(preference)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            dialog?.setOnDismissListener {
+                activity?.clearBlur()
+            }
+        }, 100)
     }
 
     override fun onResume() {
