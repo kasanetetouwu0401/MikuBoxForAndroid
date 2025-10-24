@@ -1,9 +1,10 @@
 package io.nekohasekai.sagernet.ui
 
-import android.app.Dialog
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,9 @@ abstract class ThemedActivity : AppCompatActivity {
     var uiMode = 0
     open val isDialog = false
 
+    private val handler = Handler(Looper.getMainLooper())
+    private var isBlurred = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!isDialog) Theme.apply(this) else Theme.applyDialog(this)
         Theme.applyNightTheme()
@@ -40,22 +44,24 @@ abstract class ThemedActivity : AppCompatActivity {
             }
         }
 
-        // === Tambahan: otomatis blur setiap kali dialog muncul ===
-        registerActivityLifecycleCallbacks()
+        // Auto blur setiap kali dialog muncul
+        setupDialogBlurListener()
     }
 
-    private fun registerActivityLifecycleCallbacks() {
+    private fun setupDialogBlurListener() {
         window.decorView.viewTreeObserver.addOnWindowFocusChangeListener { hasFocus ->
-            if (!hasFocus) blurBackground()
-            else clearBlur()
-        }
-
-        // Deteksi semua dialog yang dibuat di activity ini
-        window.decorView.viewTreeObserver.addOnGlobalLayoutListener {
-            val dialogs = window.peekDecorView()?.rootView
-            if (dialogs is Dialog && dialogs.isShowing) {
-                blurBackground()
-                dialogs.setOnDismissListener { clearBlur() }
+            if (!hasFocus && !isBlurred) {
+                // Blur cepat, muncul sebelum dialog sepenuhnya visible
+                handler.postDelayed({
+                    blurBackground()
+                    isBlurred = true
+                }, 50) // sedikit delay agar mulus (50ms saja)
+            } else if (hasFocus && isBlurred) {
+                // Hapus blur dengan delay kecil agar transisi tidak kasar
+                handler.postDelayed({
+                    clearBlur()
+                    isBlurred = false
+                }, 120)
             }
         }
     }
