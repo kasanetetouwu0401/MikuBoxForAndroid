@@ -163,15 +163,17 @@ class MainActivity : ThemedActivity(),
 
         if (isPreview && !DataStore.hidePreviewDialog) {
             MaterialAlertDialogBuilder(this)
-             .setTitle(BuildConfig.PRE_VERSION_NAME)
-             .setMessage(R.string.preview_version_hint)
-             .setPositiveButton(android.R.string.ok, null)
-             .setNegativeButton(R.string.hide) { _, _ ->
-                 DataStore.hidePreviewDialog = true
-             }
-             .show()
-         }
+                .setTitle(BuildConfig.PRE_VERSION_NAME)
+                .setMessage(R.string.preview_version_hint)
+                .setPositiveButton(android.R.string.ok, null)
+                .setNegativeButton(R.string.hide) { _, _ ->
+                    DataStore.hidePreviewDialog = true
+                }
+                .show()
+        }
 
+    }
+    
     override fun onResume() {
         super.onResume()
         MessageStore.setCurrentActivity(this)
