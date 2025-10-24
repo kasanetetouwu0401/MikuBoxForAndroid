@@ -1,39 +1,66 @@
 package io.nekohasekai.sagernet.utils
 
 import android.app.Activity
-import android.graphics.Bitmap
+import android.app.Dialog
+import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import jp.wasabeef.blurry.Blurry
 
+/**
+ * Buat efek blur universal untuk Activity dan Dialog.
+ */
 fun Activity.blurBackground() {
-    val decorView = window.decorView.rootView
-    decorView.isDrawingCacheEnabled = true
-    val bitmap = Bitmap.createBitmap(decorView.drawingCache)
-    decorView.isDrawingCacheEnabled = false
-
-    val blurOverlay = ImageView(this)
-    blurOverlay.tag = "BLUR_OVERLAY"
+    val rootView: View = window.decorView.findViewById(android.R.id.content)
     Blurry.with(this)
-        .radius(15)        // intensitas blur
-        .sampling(2)       // tingkat kehalusan (semakin kecil = semakin detail)
-        .from(bitmap)
-        .into(blurOverlay)
-
-    addContentView(
-        blurOverlay,
-        ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
-    )
+        .radius(20)   // ubah sesuai keinginan (10–25)
+        .sampling(2)
+        .animate(250)
+        .onto(rootView)
 }
 
 fun Activity.clearBlur() {
-    val root = window.decorView as ViewGroup
-    val overlay = root.findViewWithTag<View>("BLUR_OVERLAY")
-    if (overlay != null) {
-        (overlay.parent as? ViewGroup)?.removeView(overlay)
+    val rootView: View = window.decorView.findViewById(android.R.id.content)
+    Blurry.delete(rootView)
+}
+
+/**
+ * Tambahkan blur otomatis untuk semua dialog (baik Preference maupun Material).
+ */
+fun FragmentActivity.enableGlobalDialogBlur() {
+    val fm = supportFragmentManager
+
+    fm.registerFragmentLifecycleCallbacks(object : FragmentManager.FragmentLifecycleCallbacks() {
+        override fun onFragmentViewCreated(
+            fm: FragmentManager,
+            f: androidx.fragment.app.Fragment,
+            v: View,
+            savedInstanceState: Bundle?
+        ) {
+            if (f is DialogFragment) {
+                blurBackground()
+                f.dialog?.setOnDismissListener {
+                    clearBlur()
+                }
+            }
+        }
+    }, true)
+}
+
+/**
+ * Tambahkan blur otomatis untuk MaterialAlertDialog atau Dialog biasa.
+ */
+fun Dialog.applyBlur(activity: Activity) {
+    // Blur saat dialog muncul
+    activity.blurBackground()
+
+    setOnDismissListener {
+        activity.clearBlur()
     }
+
+    // Optional: Buat background dialog semi transparan agar blur terlihat
+    window?.setBackgroundDrawable(ColorDrawable(0xB3000000.toInt()))
 }
