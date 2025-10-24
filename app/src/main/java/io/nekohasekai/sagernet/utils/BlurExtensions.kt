@@ -1,34 +1,38 @@
 package io.nekohasekai.sagernet.utils
 
 import android.app.Activity
-import android.view.View
+import android.view.ViewGroup
 import jp.wasabeef.blurry.Blurry
 
 /**
- * Efek blur sederhana untuk Activity background.
- * Dipanggil otomatis oleh ThemedActivity saat dialog muncul.
+ * Efek blur sederhana untuk background Activity.
+ * Gunakan di Activity atau dipanggil otomatis dari ThemedActivity.
  */
 fun Activity.blurBackground() {
-    val rootView: View = window.decorView.findViewById(android.R.id.content)
+    val rootView = window.decorView.findViewById<ViewGroup>(android.R.id.content)
+    if (rootView == null) return
+
     try {
         Blurry.with(this)
-            .radius(20)     // tingkat blur (10–25 bagus)
-            .sampling(2)    // turunkan untuk performa
-            .animate(250)   // animasi muncul 250ms
+            .radius(20)     // intensitas blur
+            .sampling(2)    // optimasi performa
+            .animate(250)   // animasi halus
             .onto(rootView)
-    } catch (_: Exception) {
-        // abaikan error (misal: window belum siap)
+    } catch (e: Exception) {
+        e.printStackTrace()
     }
 }
 
 /**
- * Menghapus blur dari Activity background.
+ * Menghapus efek blur dari background Activity.
  */
 fun Activity.clearBlur() {
-    val rootView: View = window.decorView.findViewById(android.R.id.content)
+    val rootView = window.decorView.findViewById<ViewGroup>(android.R.id.content)
+    if (rootView == null) return
+
     try {
         Blurry.delete(rootView)
-    } catch (_: Exception) {
-        // aman walau dipanggil sebelum blur dibuat
+    } catch (e: Exception) {
+        e.printStackTrace()
     }
 }
