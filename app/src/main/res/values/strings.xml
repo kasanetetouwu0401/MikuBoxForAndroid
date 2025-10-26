@@ -609,8 +609,9 @@ Please grant this permission in System Settings."</string>
     <string name="open_app_settings">Go to System Settings</string>
     <string name="pref_font_bold_title">Use Bold Text</string>
     <string name="pref_font_bold_summary">Display all text using a bold typeface.</string>
-    <string name="pref_true_dark_title">True Dark Theme</string>
-    <string name="pref_true_dark_summary">Use a pure black background when Dark Theme is enabled.</string>
+    <string name="pref_true_black_title">Use the pitch black theme (AMOLED)</string>
+    <string name="pref_true_black_summary">Use a pure black background when night mode is enabled.</string>
+    <string name="pref_true_black_only_in_night_mode">Only available in night mode.</string>
     
     <!-- uwu -->
     <string name="uwu_about_miku_summary">Hatsune Miku is a Vocaloid-based virtual singer released by Crypton Future Media, code-named CV01. Known for her long turquoise twintails and clear voice, she is a 16-year-old girl and a globally renowned virtual idol. She is active in music, concerts, and anime, and is deeply loved by her fans.</string>
