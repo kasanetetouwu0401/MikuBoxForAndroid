@@ -129,4 +129,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    <include
+        android:id="@+id/app_placeholder"
+        layout="@layout/layout_app_placeholder" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
