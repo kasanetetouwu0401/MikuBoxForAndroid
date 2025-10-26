@@ -42,7 +42,7 @@ object Theme {
         }
 
         if (usingNightMode() && DataStore.trueBlackEnabled) {
-            context.setTheme(R.style.Theme_SagerNet_True_dark)
+            context.setTheme(R.style.Theme_SagerNet_True_Black)
         }
 
         val resources = context.resources
@@ -60,7 +60,7 @@ object Theme {
         }
 
         if (usingNightMode() && DataStore.trueBlackEnabled) {
-            context.setTheme(R.style.Theme_SagerNet_True_dark)
+            context.setTheme(R.style.Theme_SagerNet_True_Black)
         }
     }
 
