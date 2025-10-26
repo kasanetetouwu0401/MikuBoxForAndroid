@@ -504,11 +504,9 @@
     <string name="xhttp_extra">XHTTP Extra</string>
     <string name="xhttp_settings">XHTTP 设置</string>
     <string name="hide">隐藏</string>
-    <string name="app_list_permission_denied">
-无法加载已安装的应用程序清单.
+    <string name="app_list_permission_denied">"无法加载已安装的应用程序清单.
 您的设备系统可能限制了必要的权限(比如澎湃和MagicOS).
-请到系统设置中自行授予此权限.
-</string>
+请到系统设置中自行授予此权限."</string>
     <string name="open_app_settings">前往系统设置</string>
     <string name="pref_font_bold_title">使用粗体文本</string>
     <string name="pref_font_bold_summary">使用粗体显示所有文本.</string>
@@ -519,10 +517,10 @@
     <string name="uwu_about_miku_title">谁是 Hatsune Miku？</string>
     <string name="uwu_about_version_summary">点击此处或箭头图标, 了解应用更多信息.</string>
     <string name="uwu_about_version_title">关于应用</string>
-    <string name="uwu_banner_settings_summary">欢迎来到设置菜单,
+    <string name="uwu_banner_settings_summary">"欢迎来到设置菜单,
 请选择任何你
 需要的和必须
-的功能选项</string>
+的功能选项"</string>
     <string name="uwu_banner_settings_title">你好呀……</string>
     <string name="uwu_banner_summary">来和我一起唱歌吧！</string>
     <string name="uwu_banner_summary_1">美好的一天。</string>
@@ -540,16 +538,16 @@
     <string name="uwu_maintainer_summary">HatsuneMikuUwU 开发团队</string>
     <string name="uwu_maintainer_title">本应用由以下团队维护</string>
     <string name="uwu_splash_summary">版本 1.4.1-UwU</string>
-    <string name="uwu_splash_title">用心制作 ❤️
-HatsuneMikuUwU 开发组</string>
+    <string name="uwu_splash_title">"用心制作 ❤️
+HatsuneMikuUwU 开发组"</string>
     <string name="uwu_theme_settings_summary">自定义强调色</string>
     <string name="uwu_theme_settings_title">主题设置</string>
 
     <string name="uwu_welcome_title">欢迎来到</string>
-    <string name="uwu_welcome_summary_1">MikuBox,
-    一款适用于 Android 的 Sing-box 客户端</string>
+    <string name="uwu_welcome_summary_1">"MikuBox,
+    一款适用于 Android 的 Sing-box 客户端"</string>
     <string name="uwu_welcome_summary_2">Android 上的 Sing-box 客户端, 采用 UwU 开发的 Miku UI</string>
-    <string name="uwu_welcome_summary_3">使用 Heart、Gradle、Kotlin、Java 等语言制作</string>
+    <string name="uwu_welcome_summary_3">使用 Heart, Gradle, Kotlin, Java 等语言制作</string>
 
     <string name="uwu_greeting_morning"> 早安…</string>
     <string name="uwu_greeting_afternoon"> 午安…</string>
