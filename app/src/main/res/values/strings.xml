@@ -676,5 +676,5 @@ By HatsuneMikuUwU Development"</string>
     <string name="uwu_greeting_afternoon">Good afternoon...</string>
     <string name="uwu_greeting_evening">Good evening...</string>
     <string name="uwu_greeting_night">Good night...</string>
-    <string name="uwu_greeting_late_night">It's time to go to sleep...</string>
+    <string name="uwu_greeting_late_night">"It's time to go to sleep..."</string>
 </resources>
