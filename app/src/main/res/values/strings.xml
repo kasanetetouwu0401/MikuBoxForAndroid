@@ -20,10 +20,8 @@
     <string name="tile_title">Switcher</string>
     <string name="menu_traffic">Traffic</string>
     <string name="menu_dashboard">sing-box Dashboard</string>
-    <!-- externel -->
     <string name="action_copy">Copy</string>
     <string name="action_open">Open</string>
-    <!-- group -->
     <string name="group_name">Group name</string>
     <string name="group_update" formatted="false">Update</string>
     <string name="group_subscription_link">Subscription Link</string>
@@ -46,7 +44,6 @@
     <string name="group_changed">Updated: \n%s</string>
     <string name="group_deleted">Deleted: \n%s</string>
     <string name="group_duplicate">Duplicate: \n%s</string>
-    <!-- misc -->
     <string name="service_mode">Service Mode</string>
     <string name="service_mode_proxy">Proxy only</string>
     <string name="service_mode_vpn" translatable="false">VPN</string>
@@ -247,7 +244,6 @@
     <string name="action_import_err">Failed to import.</string>
     <string name="file_manager_missing">Your device lacks an Android standard file selector, please
         install one, such as Material Files.</string>
-    <!-- share -->
     <!-- profile -->
     <string name="profile_config">Profile config</string>
     <string name="delete">Remove</string>
@@ -266,7 +262,6 @@
     <string name="undo">Undo</string>
     <string name="insecure">Insecure</string>
     <string name="deprecated">Deprecated</string>
-    <!-- tasker -->
     <!-- status -->
     <string name="connecting">Connecting…</string>
     <string name="vpn_connected">Connected, tap to check connection</string>
@@ -608,7 +603,9 @@
     <string name="xhttp_extra">XHTTP Extra</string>
     <string name="xhttp_settings">XHTTP Settings</string>
     <string name="hide">Hide</string>
-    <string name="app_list_permission_denied">Can't load the list of installed apps.\nYour device's system has likely restricted the necessary permission.\nPlease grant this permission in System Settings.</string>
+    <string name="app_list_permission_denied">"Can't load the list of installed apps.
+Your device's system has likely restricted the necessary permission.
+Please grant this permission in System Settings."</string>
     <string name="open_app_settings">Go to System Settings</string>
     <string name="pref_font_bold_title">Use Bold Text</string>
     <string name="pref_font_bold_summary">Display all text using a bold typeface.</string>
@@ -670,8 +667,8 @@ By HatsuneMikuUwU Development"</string>
     <string name="uwu_start">Start</string>
 
     <string name="uwu_welcome_title">Welcome to</string>
-    <string name="uwu_welcome_summary_1">MikuBox
-    A sing-box client for Android.</string>
+    <string name="uwu_welcome_summary_1">"MikuBox
+    A sing-box client for Android."</string>
     <string name="uwu_welcome_summary_2">Sing-box client for Android With a Miku UI style from the UwU development.</string>
     <string name="uwu_welcome_summary_3">Made with Heart, Gradle, Kotlin, Java code and more.</string>
 
@@ -680,5 +677,4 @@ By HatsuneMikuUwU Development"</string>
     <string name="uwu_greeting_evening">Good evening...</string>
     <string name="uwu_greeting_night">Good night...</string>
     <string name="uwu_greeting_late_night">"It's time to go to sleep..."</string>
-    
 </resources>
