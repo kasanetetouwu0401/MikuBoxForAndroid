@@ -4,9 +4,25 @@
         <item name="android:colorBackground">#ff000000</item>
         <item name="colorBg">#ff000000</item>
         <item name="colorCard">#ff131313</item>
-        <item name="colorSurfaceContainerHighest">#ff212121</item>
         <item name="colorSurfaceContainerHigh">#ff212121</item>
+        <item name="colorSurfaceContainerHighest">#ff212121</item>
         <item name="colorSurfaceContainerLow">#ff131313</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet.True.Black</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet.True.Black</item>
+    </style>
+    <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet.True.Black" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="backgroundTint">#ff212121</item>
+        <item name="colorSurface">#ff212121</item>
+        <item name="android:backgroundTint">#ff212121</item>
+        <item name="android:background">#ff212121</item>
+        <item name="android:colorBackground">#ff212121</item>
+        <item name="android:colorBackgroundFloating">#ff212121</item>
+        <item name="android:dialogCornerRadius">28.0dip</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.MaterialComponents.Button.TextButton.Dialog.Primary</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush.Primary</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.MaterialComponents.Button.TextButton.Dialog.Primary</item>
+        <item name="colorBackgroundFloating">#ff212121</item>
+        <item name="dialogCornerRadius">28.0dip</item>
     </style>
   
     <style name="Theme.SagerNet" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
@@ -182,6 +198,10 @@
 
 
     <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="backgroundTint">?attr/colorSurfaceContainerHigh</item>
+        <item name="colorSurface">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:backgroundTint">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:background">?attr/colorSurfaceContainerHigh</item>
         <item name="android:colorBackground">?attr/colorSurfaceContainerHigh</item>
         <item name="android:colorBackgroundFloating">?attr/colorSurfaceContainerHigh</item>
         <item name="android:dialogCornerRadius">28.0dip</item>
