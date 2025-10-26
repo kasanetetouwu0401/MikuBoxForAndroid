@@ -29,13 +29,9 @@
     <string name="group_updated" formatted="false">%s: 更新了 %d 个节点</string>
     <string name="group_show_diff">变化</string>
     <string name="group_delete_confirm_prompt">您确定要删除这个分组吗\?</string>
-    <string name="group_added">新增:
-        \n%s</string>
-    <string name="group_changed">更新:
-        \n%s</string>
-    <string name="group_deleted">删除:
-        \n%s</string>
-    <!-- misc -->
+    <string name="group_added">新增:\n%s</string>
+    <string name="group_changed">更新:\n%s</string>
+    <string name="group_deleted">删除:\n%s</string>
     <string name="service_mode">运行模式</string>
     <string name="service_mode_proxy">仅代理</string>
     <string name="port_proxy">代理端口</string>
@@ -53,8 +49,7 @@
     <string name="ws_browser_forwarding_sum">转发相应的 WebSockets 到浏览器.</string>
     <string name="speed_interval">速度通知更新间隔</string>
     <string name="traffic">%1$s↑ %2$s↓</string>
-    <string name="speed_detail">代理： %1$s↑ %2$s↓
-        \n直连： %3$s↑ %4$s↓</string>
+    <string name="speed_detail">代理： %1$s↑ %2$s↓\n直连： %3$s↑ %4$s↓</string>
     <string name="speed">%s/s</string>
     <string name="connection_test_testing">测试中…</string>
     <string name="connection_test_available">连接成功: HTTPS 握手耗时 %dms</string>
@@ -131,7 +126,6 @@
     <string name="action_export_err">导出失败.</string>
     <string name="action_import_msg">导入成功!</string>
     <string name="action_import_err">导入失败.</string>
-    <!-- share -->
     <!-- profile -->
     <string name="profile_config">服务器配置</string>
     <string name="delete">删除</string>
@@ -146,7 +140,6 @@
         <item quantity="other">已添加 %d 个配置</item>
     </plurals>
     <string name="undo">还原</string>
-    <!-- tasker -->
     <!-- status -->
     <string name="connecting">正在连接…</string>
     <string name="vpn_connected">已连接 , 点击此处测试连接</string>
@@ -189,8 +182,7 @@
     <string name="utls_fingerprint">uTLS 指纹</string>
     <string name="grpc_service_name">gRPC 服务名称</string>
     <string name="alpn">应用层协议协商</string>
-    <string name="group_duplicate">重复:
-        \n%s</string>
+    <string name="group_duplicate">重复:\n%s</string>
     <string name="deduplication">去重</string>
     <string name="version_x">版本 (%s)</string>
     <string name="show_stop">显示停止按钮</string>
@@ -355,8 +347,7 @@
     <string name="group_order_origin">原始</string>
     <string name="group_order_by_name">以名称</string>
     <string name="group_order_by_delay">以延时</string>
-    <string name="plugin_exists_but_on_shit_system" formatted="false">配置 %s 需要插件
-        %s, 但你的专有设备供应商（通常也是监视资本主义巨头和恶意软件制造商）篡改了你的安卓系统, 使该插件无法使用。</string>
+    <string name="plugin_exists_but_on_shit_system" formatted="false">配置 %s 需要插件\n%s, 但你的专有设备供应商（通常也是监视资本主义巨头和恶意软件制造商）篡改了你的安卓系统, 使该插件无法使用。</string>
     <string name="shadowsocks_plugin_v2ray">V2Ray （Shadowsocks Android 插件）</string>
     <string name="shadowsocks_plugin_simple_obfs">Simple Obfs （Shadowsocks Android 插件）</string>
     <string name="menu_traffic">流量</string>
@@ -404,9 +395,7 @@
     <string name="route_play_store">%s Play 商店规则</string>
     <string name="route_opt_block_analysis">屏蔽跟踪器</string>
     <string name="naive_insecure_concurrency">不安全并发</string>
-    <string name="naive_insecure_concurrency_summary">使用N个并发的隧道连接, 在恶劣的网络条件下更加强大。更多的连接使隧道更容易被发现, 安全性更低。这个项目力求对流量分析有最强的安全性。以不安全的方式使用它就违背了它的目的。
-        \n
-        \n如果你必须使用它, 先试试N=2, 看看是否能解决你的问题。强烈建议不要在这里使用超过4个连接。</string>
+    <string name="naive_insecure_concurrency_summary">使用N个并发的隧道连接, 在恶劣的网络条件下更加强大。更多的连接使隧道更容易被发现, 安全性更低。这个项目力求对流量分析有最强的安全性。以不安全的方式使用它就违背了它的目的。\n\n如果你必须使用它, 先试试N=2, 看看是否能解决你的问题。强烈建议不要在这里使用超过4个连接。</string>
     <string name="tools_network">网络</string>
     <string name="backup">备份</string>
     <string name="backup_groups_and_configurations">分组和配置</string>
@@ -440,12 +429,8 @@
     <string name="domain_strategy_for_remote">域名策略（远程）</string>
     <string name="domain_strategy_for_direct">域名策略（直连）</string>
     <string name="domain_strategy_for_server">域名策略（服务器地址）</string>
-    <string name="tuic_disable_sni">禁用 SNI</string>
-    <string name="tuic_reduce_rtt">启用 0-RTT QUIC 握手</string>
-    <string name="tuic_congestion_controller">拥塞控制</string>
-    <string name="tuic_udp_relay_mode">UDP 转发模式</string>
-    <string name="pinned_certchain_sha256">固定证书链散列</string>
-    <string name="menu_dashboard">sing-box 仪表板</string>
+    <string name="show_bottom_bar">像 SagerNet 一样显示底栏</string>
+    <string name="utls_fingerprint">uTLS 指纹</string>
     <string name="custom_outbound_json">自定义出站 JSON</string>
     <string name="custom_config_json">自定义配置 JSON</string>
     <string name="is_outbound_only">设置的 JSON 是出站</string>
@@ -522,22 +507,25 @@
     <string name="xhttp_extra">XHTTP Extra</string>
     <string name="xhttp_settings">XHTTP 设置</string>
     <string name="hide">隐藏</string>
-    <string name="app_list_permission_denied">无法加载已安装的应用程序清单.\n您的设备系统可能限制了必要的权限(比如澎湃和MagicOS).\n请至系统设置中授予此权限。</string>
+    <string name="app_list_permission_denied">
+无法加载已安装的应用程序清单.
+您的设备系统可能限制了必要的权限(比如澎湃和MagicOS).
+请到系统设置中自行授予此权限.
+</string>
     <string name="open_app_settings">前往系统设置</string>
     <string name="pref_font_bold_title">使用粗体文本</string>
     <string name="pref_font_bold_summary">使用粗体显示所有文本.</string>
     <string name="pref_true_dark_title">深色主题</string>
     <string name="pref_true_dark_summary">在激活深色主题时使用纯黑色背景.</string>
     
-    <!-- uwu -->
     <string name="uwu_about_miku_summary">初音未来(Hatsune Miku) 是 Crypton Future Media 发布的基于 Vocaloid 制作的虚拟歌手, 代号CV01。以青绿色的长双马尾和清亮嗓音著称, 人设为16岁少女, 是全球知名虚拟偶像, 广泛活跃于音乐、演唱会及动画, 深受粉丝们喜爱。</string>
     <string name="uwu_about_miku_title">谁是 Hatsune Miku?</string>
     <string name="uwu_about_version_summary">点击此处或箭头图标, 了解应用更多信息。</string>
     <string name="uwu_about_version_title">关于应用</string>
-    <string name="uwu_banner_settings_summary">"欢迎来到设置菜单, 
+    <string name="uwu_banner_settings_summary">欢迎来到设置菜单,
 请选择任何你
 需要的和必须
-的功能选项"</string>
+的功能选项</string>
     <string name="uwu_banner_settings_title">你好呀……</string>
     <string name="uwu_banner_summary">来和我一起唱歌吧！</string>
     <string name="uwu_banner_summary_1">美好的一天。</string>
@@ -555,13 +543,13 @@
     <string name="uwu_maintainer_summary">HatsuneMikuUwU 开发团队</string>
     <string name="uwu_maintainer_title">本应用由以下团队维护</string>
     <string name="uwu_splash_summary">版本 1.4.1-UwU</string>
-    <string name="uwu_splash_title">"用心制作 ❤️
-HatsuneMikuUwU 开发组"</string>
+    <string name="uwu_splash_title">用心制作 ❤️
+HatsuneMikuUwU 开发组</string>
     <string name="uwu_theme_settings_summary">自定义强调色</string>
     <string name="uwu_theme_settings_title">主题设置</string>
 
     <string name="uwu_welcome_title">欢迎来到</string>
-    <string name="uwu_welcome_summary_1">MikuBox, 
+    <string name="uwu_welcome_summary_1">MikuBox,
     一款适用于 Android 的 Sing-box 客户端 </string>
     <string name="uwu_welcome_summary_2">Android 上的 Sing-box 客户端, 采用 UwU 开发的 Miku UI </string>
     <string name="uwu_welcome_summary_3">使用 Heart、Gradle、Kotlin、Java 等语言制作 </string>
@@ -572,7 +560,6 @@ HatsuneMikuUwU 开发组"</string>
     <string name="uwu_greeting_night"> 晚安...</string>
     <string name="uwu_greeting_late_night"> 该睡觉啦...</string>
 
-    <!-- miku-->
     <string name="uwu_miku_gender_title">性别</string>
     <string name="uwu_miku_gender_summary">女性</string>
     <string name="uwu_miku_birthday_title">生日</string>
