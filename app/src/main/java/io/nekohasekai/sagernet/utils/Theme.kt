@@ -41,6 +41,10 @@ object Theme {
             context.setTheme(R.style.BoldTextThemeOverlay)
         }
 
+        if (usingNightMode() && DataStore.trueBlackEnabled) {
+            context.setTheme(R.style.Theme_SagerNet_True_dark)
+        }
+
         val resources = context.resources
         val configuration = Configuration(resources.configuration)
         configuration.fontScale = if (DataStore.boldFontEnabled) 1.05f else 1.0f
@@ -53,6 +57,10 @@ object Theme {
 
         if (DataStore.boldFontEnabled) {
             context.setTheme(R.style.BoldTextThemeOverlay)
+        }
+
+        if (usingNightMode() && DataStore.trueBlackEnabled) {
+            context.setTheme(R.style.Theme_SagerNet_True_dark)
         }
     }
 

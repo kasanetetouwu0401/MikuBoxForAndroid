@@ -1,4 +1,13 @@
 <resources>
+
+  <style name="Theme.SagerNet.True.Black" parent="@style/ThemeOverlay.MaterialComponents">
+        <item name="android:colorBackground">#ff000000</item>
+        <item name="colorBg">#ff000000</item>
+        <item name="colorCard">#ff131313</item>
+        <item name="colorSurfaceContainerHighest">#ff212121</item>
+        <item name="colorSurfaceContainerHigh">#ff212121</item>
+        <item name="colorSurfaceContainerLow">#ff131313</item>
+    </style>
   
     <style name="Theme.SagerNet" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:colorBackground">@color/magenta_background</item>
@@ -2273,5 +2282,9 @@
     <style name="ThemeOverlay.Material3.NavigationView" parent="">
         <item name="android:listDivider">?colorOutline</item>
     </style>
+
+  <style name="BoldTextThemeOverlay">
+    <item name="android:textStyle">bold</item>
+  </style>
     
 </resources>

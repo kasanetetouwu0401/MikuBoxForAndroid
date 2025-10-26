@@ -45,6 +45,15 @@
 
         <SwitchPreference
             android:layout="@layout/uwu_mid_switch"
+            android:title="@string/pref_true_dark_title"
+            android:key="true_dark_enabled"
+            android:summary="@string/pref_true_dark_summary"
+            android:widgetLayout="@layout/uwu_switch"
+            android:defaultValue="false"
+            app:icon="@drawable/ic_toggle_switch" />
+
+        <SwitchPreference
+            android:layout="@layout/uwu_mid_switch"
             android:widgetLayout="@layout/uwu_switch"
             android:summaryOn="@string/on"
             android:summaryOff="@string/off"

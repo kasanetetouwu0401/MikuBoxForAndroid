@@ -117,17 +117,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             true
        }
 
-        fun getLanguageDisplayName(code: String): String {
-        return when (code) {
-            "" -> getString(R.string.language_system_default)
-            "en-US" -> getString(R.string.language_en_display_name)
-            "id" -> getString(R.string.language_id_display_name)
-            "zh-Hans-CN" -> getString(R.string.language_zh_Hans_CN_display_name)
-            else -> Locale.forLanguageTag(code).displayName
-        }
-    }
-
-    val boldFontSwitch = findPreference<SwitchPreference>("bold_font_switch")
+        val boldFontSwitch = findPreference<SwitchPreference>("bold_font_switch")
         if (boldFontSwitch != null) {
             boldFontSwitch.isChecked = DataStore.boldFontEnabled
             boldFontSwitch.setOnPreferenceChangeListener { _, newValue ->
@@ -137,6 +127,28 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
                 true
             }
         }
+
+        val trueBlackSwitch = findPreference<SwitchPreference>("true_dark_enabled")
+        if (trueBlackSwitch != null) {
+            trueBlackSwitch.isChecked = DataStore.trueBlackEnabled
+            trueBlackSwitch.setOnPreferenceChangeListener { _, newValue ->
+                val enabled = newValue as Boolean
+                DataStore.trueBlackEnabled = enabled
+                Theme.apply(requireContext().applicationContext)
+                requireActivity().recreate()
+                true
+            }
+        }
+
+        fun getLanguageDisplayName(code: String): String {
+        return when (code) {
+            "" -> getString(R.string.language_system_default)
+            "en-US" -> getString(R.string.language_en_display_name)
+            "id" -> getString(R.string.language_id_display_name)
+            "zh-Hans-CN" -> getString(R.string.language_zh_Hans_CN_display_name)
+            else -> Locale.forLanguageTag(code).displayName
+        }
+    }
 
     val appLanguage = findPreference<SimpleMenuPreference>(Key.APP_LANGUAGE)
 
