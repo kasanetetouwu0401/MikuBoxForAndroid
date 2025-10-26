@@ -127,6 +127,17 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         }
     }
 
+    val boldFontSwitch = findPreference<SwitchPreference>("bold_font_switch")
+        if (boldFontSwitch != null) {
+            boldFontSwitch.isChecked = DataStore.boldFontEnabled
+            boldFontSwitch.setOnPreferenceChangeListener { _, newValue ->
+                DataStore.boldFontEnabled = newValue as Boolean
+                Theme.apply(requireContext().applicationContext)
+                requireActivity().recreate()
+                true
+            }
+        }
+
     val appLanguage = findPreference<SimpleMenuPreference>(Key.APP_LANGUAGE)
 
     if (appLanguage != null) {

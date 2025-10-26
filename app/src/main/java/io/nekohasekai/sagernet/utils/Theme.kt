@@ -36,10 +36,24 @@ object Theme {
 
     fun apply(context: Context) {
         context.setTheme(getTheme())
+
+        if (DataStore.boldFontEnabled) {
+            context.setTheme(R.style.BoldTextThemeOverlay)
+        }
+
+        val resources = context.resources
+        val configuration = Configuration(resources.configuration)
+        configuration.fontScale = if (DataStore.boldFontEnabled) 1.05f else 1.0f
+        @Suppress("DEPRECATION")
+        resources.updateConfiguration(configuration, resources.displayMetrics)
     }
 
     fun applyDialog(context: Context) {
         context.setTheme(getDialogTheme())
+
+        if (DataStore.boldFontEnabled) {
+            context.setTheme(R.style.BoldTextThemeOverlay)
+        }
     }
 
     fun getTheme(): Int {
@@ -107,6 +121,7 @@ object Theme {
     }
 
     var currentNightMode = -1
+
     fun getNightMode(): Int {
         if (currentNightMode == -1) {
             currentNightMode = DataStore.nightTheme
@@ -134,5 +149,4 @@ object Theme {
     fun applyNightTheme() {
         AppCompatDelegate.setDefaultNightMode(getNightMode())
     }
-
 }

@@ -62,6 +62,15 @@
             app:title="@string/fab_style"
             app:useSimpleSummaryProvider="true" />
 
+        <SwitchPreference
+            android:layout="@layout/uwu_mid_switch"
+            android:title="@string/pref_font_bold_title"
+            android:key="bold_font_switch"
+            android:summary="@string/pref_font_bold_summary"
+            android:widgetLayout="@layout/uwu_switch"
+            android:defaultValue="false"
+            app:icon="@drawable/ic_format_font" />
+
         <com.takisoft.preferencex.SimpleMenuPreference
             android:layout="@layout/uwu_bot"
             app:defaultValue=""
