@@ -96,6 +96,7 @@ class AppListActivity : ThemedActivity() {
         var filteredApps = apps
 
         suspend fun reload() {
+            PackageCache.reload()
             apps = getCachedApps().mapNotNull { (packageName, packageInfo) ->
                 coroutineContext[Job]!!.ensureActive()
                 packageInfo.applicationInfo?.let { ProxiedApp(packageManager, it, packageName) }
