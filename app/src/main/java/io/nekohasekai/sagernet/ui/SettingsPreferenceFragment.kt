@@ -131,11 +131,42 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         val trueBlackSwitch = findPreference<SwitchPreference>("true_dark_enabled")
         if (trueBlackSwitch != null) {
             trueBlackSwitch.isChecked = DataStore.trueBlackEnabled
+
+            val isNightModeActive = Theme.usingNightMode()
+            trueBlackSwitch.isEnabled = isNightModeActive
+
+            if (!isNightModeActive) {
+                trueBlackSwitch.summary = getString(R.string.pref_true_black_only_in_night_mode)
+            } else {
+                trueBlackSwitch.summary = getString(R.string.pref_true_black_summary)
+            }
+
             trueBlackSwitch.setOnPreferenceChangeListener { _, newValue ->
                 val enabled = newValue as Boolean
                 DataStore.trueBlackEnabled = enabled
                 Theme.apply(requireContext().applicationContext)
                 requireActivity().recreate()
+                true
+            }
+
+            nightTheme.setOnPreferenceChangeListener { _, newValue ->
+                val newMode = (newValue as String).toInt()
+                Theme.currentNightMode = newMode
+                Theme.applyNightTheme()
+
+                val nowNight = Theme.usingNightMode()
+                trueBlackSwitch.isEnabled = nowNight
+                trueBlackSwitch.summary = if (nowNight) {
+                    getString(R.string.pref_true_black_summary)
+                } else {
+                    getString(R.string.pref_true_black_only_in_night_mode)
+                }
+
+                if (!nowNight && DataStore.trueBlackEnabled) {
+                    DataStore.trueBlackEnabled = false
+                    trueBlackSwitch.isChecked = false
+                }
+
                 true
             }
         }
