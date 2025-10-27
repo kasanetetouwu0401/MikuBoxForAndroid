@@ -10,6 +10,7 @@
         <item name="alertDialogTheme">@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet.True.Black</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet.True.Black</item>
     </style>
+  
     <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet.True.Black" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="backgroundTint">#ff212121</item>
         <item name="colorSurface">#ff212121</item>
