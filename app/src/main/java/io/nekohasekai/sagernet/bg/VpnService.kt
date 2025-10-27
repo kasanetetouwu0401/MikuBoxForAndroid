@@ -17,6 +17,7 @@ import io.nekohasekai.sagernet.ktx.*
 import io.nekohasekai.sagernet.ui.VpnRequestActivity
 import io.nekohasekai.sagernet.utils.Subnet
 import android.net.VpnService as BaseVpnService
+import io.nekohasekai.sagernet.utils.SoundPlayer
 
 class VpnService : BaseVpnService(),
     BaseService.Interface {
@@ -52,6 +53,7 @@ class VpnService : BaseVpnService(),
 
     @Suppress("EXPERIMENTAL_API_USAGE")
     override fun killProcesses() {
+        SoundPlayer.playDisconnect(this)
         conn?.close()
         conn = null
         super.killProcesses()
@@ -196,6 +198,8 @@ class VpnService : BaseVpnService(),
         if (Build.VERSION.SDK_INT >= 29) builder.setMetered(metered)
         conn = builder.establish() ?: throw NullConnectionException()
 
+        SoundPlayer.playConnect(this)
+
         return conn!!.fd
     }
 
@@ -211,6 +215,7 @@ class VpnService : BaseVpnService(),
     override fun onRevoke() = stopRunner()
 
     override fun onDestroy() {
+        SoundPlayer.playDisconnect(this)
         DataStore.vpnService = null
         super.onDestroy()
         data.binder.close()
