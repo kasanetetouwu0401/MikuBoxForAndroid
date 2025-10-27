@@ -53,7 +53,9 @@ class VpnService : BaseVpnService(),
 
     @Suppress("EXPERIMENTAL_API_USAGE")
     override fun killProcesses() {
+        if (DataStore.soundOnConnect) {
         SoundPlayer.playDisconnect(this)
+        }
         conn?.close()
         conn = null
         super.killProcesses()
@@ -198,7 +200,9 @@ class VpnService : BaseVpnService(),
         if (Build.VERSION.SDK_INT >= 29) builder.setMetered(metered)
         conn = builder.establish() ?: throw NullConnectionException()
 
-        SoundPlayer.playConnect(this)
+        if (DataStore.soundOnConnect) {
+           SoundPlayer.playConnect(this)
+        }
 
         return conn!!.fd
     }
@@ -215,7 +219,9 @@ class VpnService : BaseVpnService(),
     override fun onRevoke() = stopRunner()
 
     override fun onDestroy() {
-        SoundPlayer.playDisconnect(this)
+        if (DataStore.soundOnConnect) {
+           SoundPlayer.playDisconnect(this)
+        }
         DataStore.vpnService = null
         super.onDestroy()
         data.binder.close()
