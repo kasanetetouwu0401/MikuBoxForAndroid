@@ -25,6 +25,7 @@ import moe.matsuri.nb4a.ui.ColorPickerPreference
 import moe.matsuri.nb4a.ui.EditConfigPreference
 import moe.matsuri.nb4a.ui.LongClickListPreference
 import moe.matsuri.nb4a.ui.MTUPreference
+import moe.matsuri.nb4a.ui.DpiEditTextPreference
 import com.takisoft.preferencex.PreferenceFragmentCompat
 import com.takisoft.preferencex.SimpleMenuPreference
 import androidx.appcompat.app.AppCompatDelegate
@@ -163,20 +164,23 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             }
         }
 
-        val dpiPref = findPreference<EditTextPreference>("custom_dpi")
-        dpiPref?.apply {
-            val currentDpi = DataStore.dpiValue.takeIf { it > 0 } ?: resources.displayMetrics.densityDpi
-            text = currentDpi.toString()
-            setOnBindEditTextListener { editText ->
-                editText.inputType = EditorInfo.TYPE_CLASS_NUMBER
-            }
-            setOnPreferenceChangeListener { _, newValue ->
-                val dpi = (newValue as String).toIntOrNull() ?: currentDpi
-                val clampedDpi = dpi.coerceIn(200, 600)
-                DataStore.dpiValue = clampedDpi
-                DPIController.applyDpi(requireContext(), clampedDpi)
-                requireActivity().recreate()
-                true
+        val dpiPref = findPreference<DpiEditTextPreference>("custom_dpi")
+         dpiPref?.apply {
+           val defaultDpi = resources.displayMetrics.densityDpi
+           val currentDpi = DataStore.dpiValue.takeIf { it > 0 } ?: defaultDpi
+           text = currentDpi.toString()
+
+           setOnBindEditTextListener { editText ->
+               editText.inputType = EditorInfo.TYPE_CLASS_NUMBER
+           }
+
+           setOnPreferenceChangeListener { _, newValue ->
+               val dpi = (newValue as String).toIntOrNull() ?: currentDpi
+               val clamped = dpi.coerceIn(200, 500)
+               DataStore.dpiValue = clamped
+               DPIController.applyDpi(requireContext(), clamped)
+               requireActivity().recreate()
+               true
             }
         }
 

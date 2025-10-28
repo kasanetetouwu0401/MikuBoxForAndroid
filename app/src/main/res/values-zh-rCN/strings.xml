@@ -516,6 +516,11 @@
     <string name="sound_connect_title">VPN 连接声音</string>
     <string name="sound_connect_summary">VPN 连接或断开时播放声音</string>
     <string name="pref_custom_dpi">手动设置应用程序 DPI</string>
+    <string name="dpi_reset_to_default">DPI 重置为系统默认值 (%1$d)</string>
+    <string name="pref_custom_dpi_dialog_massage">200-500 (长按首选项将 DPI 重置为系统默认值)</string>
+    <string name="reset_dpi_title">重置 DPI</string>
+    <string name="reset_dpi_message">是否要将 DPI 恢复为系统默认值 (%1$d)?</string>
+    <string name="reset">重置</string>
     
     <string name="uwu_about_miku_summary">初音未来(Hatsune Miku) 是 Crypton Future Media 发布的基于 Vocaloid 制作的虚拟歌手, 代号CV01. 以青绿色的长双马尾和清亮嗓音著称, 人设为16岁少女, 是全球知名虚拟偶像, 广泛活跃于音乐、演唱会及动画, 深受粉丝们喜爱.</string>
     <string name="uwu_about_miku_title">谁是 Hatsune Miku？</string>
@@ -549,7 +554,7 @@ HatsuneMikuUwU 开发组"</string>
 
     <string name="uwu_welcome_title">欢迎来到</string>
     <string name="uwu_welcome_summary_1">"MikuBox,
-    一款适用于 Android 的 Sing-box 客户端"</string>
+        一款适用于 Android 的 Sing-box 客户端"</string>
     <string name="uwu_welcome_summary_2">Android 上的 Sing-box 客户端, 采用 UwU 开发的 Miku UI</string>
     <string name="uwu_welcome_summary_3">使用 Heart, Gradle, Kotlin, Java 等语言制作</string>
 

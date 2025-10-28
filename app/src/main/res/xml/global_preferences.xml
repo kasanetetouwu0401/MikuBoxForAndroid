@@ -52,9 +52,9 @@
             android:defaultValue="false"
             app:icon="@drawable/ic_toggle_switch" />
 
-        <EditTextPreference
+        <moe.matsuri.nb4a.ui.DpiEditTextPreference
             android:layout="@layout/uwu_mid"
-            app:dialogMessage="200-600"
+            app:dialogMessage="@string/pref_custom_dpi_dialog_massage"
             app:defaultValue="0"
             app:icon="@drawable/ic_cellphone_screenshot"
             app:key="custom_dpi"
