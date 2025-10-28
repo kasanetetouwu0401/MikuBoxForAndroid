@@ -14,10 +14,19 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.utils.Theme
+import android.content.Context
+import io.nekohasekai.sagernet.utils.DPIController
+import io.nekohasekai.sagernet.database.DataStore
 
 abstract class ThemedActivity : AppCompatActivity {
     constructor() : super()
     constructor(contentLayoutId: Int) : super(contentLayoutId)
+
+    override fun attachBaseContext(newBase: Context) {
+        val dpi = DataStore.dpiValue
+        val wrapped = if (dpi > 0) DPIController.wrapWithDpi(newBase, dpi) else newBase
+        super.attachBaseContext(wrapped)
+    }
 
     var themeResId = 0
     var uiMode = 0
@@ -34,6 +43,11 @@ abstract class ThemedActivity : AppCompatActivity {
         super.onCreate(savedInstanceState)
 
         uiMode = resources.configuration.uiMode
+
+        val dpi = DataStore.dpiValue
+        if (dpi > 0) {
+            DPIController.applyDpi(this, dpi)
+        }
 
         if (Build.VERSION.SDK_INT >= 35) {
             ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { _, insets ->

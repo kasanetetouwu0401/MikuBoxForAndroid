@@ -93,6 +93,9 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var boldFontEnabled by configurationStore.boolean("bold_font_switch")
     var trueBlackEnabled by configurationStore.boolean("true_dark_enabled")
     var soundOnConnect by configurationStore.boolean("sound_connect") { true }
+    var dpiValue: Int
+    get() = configurationStore.getInt("dpi_value", 0)
+    set(value) = configurationStore.putInt("dpi_value", value)
 
     var appTLSVersion by configurationStore.string(Key.APP_TLS_VERSION)
     var enableClashAPI by configurationStore.boolean(Key.ENABLE_CLASH_API)

@@ -34,6 +34,7 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import java.io.File
+import io.nekohasekai.sagernet.utils.DPIController
 
 class SettingsPreferenceFragment : PreferenceFragmentCompat() {
 
@@ -158,6 +159,23 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             isChecked = DataStore.soundOnConnect
             setOnPreferenceChangeListener { _, newValue ->
                 DataStore.soundOnConnect = newValue as Boolean
+                true
+            }
+        }
+
+        val dpiPref = findPreference<EditTextPreference>("custom_dpi")
+        dpiPref?.apply {
+            val currentDpi = DataStore.dpiValue.takeIf { it > 0 } ?: resources.displayMetrics.densityDpi
+            text = currentDpi.toString()
+            setOnBindEditTextListener { editText ->
+                editText.inputType = EditorInfo.TYPE_CLASS_NUMBER
+            }
+            setOnPreferenceChangeListener { _, newValue ->
+                val dpi = (newValue as String).toIntOrNull() ?: currentDpi
+                val clampedDpi = dpi.coerceIn(200, 600)
+                DataStore.dpiValue = clampedDpi
+                DPIController.applyDpi(requireContext(), clampedDpi)
+                requireActivity().recreate()
                 true
             }
         }

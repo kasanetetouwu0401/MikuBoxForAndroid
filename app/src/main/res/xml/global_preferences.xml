@@ -52,6 +52,16 @@
             android:defaultValue="false"
             app:icon="@drawable/ic_toggle_switch" />
 
+        <EditTextPreference
+            android:layout="@layout/uwu_mid"
+            app:dialogMessage="200-600"
+            app:defaultValue="0"
+            app:icon="@drawable/ic_cellphone_screenshot"
+            app:key="custom_dpi"
+            app:title="@string/pref_custom_dpi"
+            android:inputType="number"
+            app:useSimpleSummaryProvider="true" />
+
         <SwitchPreference
             android:layout="@layout/uwu_mid_switch"
             android:widgetLayout="@layout/uwu_switch"
