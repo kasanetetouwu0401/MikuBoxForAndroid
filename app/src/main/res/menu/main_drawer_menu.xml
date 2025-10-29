@@ -27,6 +27,10 @@
         android:id="@+id/misc"
         android:checkableBehavior="single">
         <item
+            android:icon="@drawable/ic_baseline_color_lens_24"
+            android:id="@+id/nav_theme"
+            android:title="@string/uwu_theme_settings_title" />
+        <item
             android:id="@+id/nav_logcat"
             android:icon="@drawable/ic_baseline_bug_report_24"
             android:title="@string/menu_log" />

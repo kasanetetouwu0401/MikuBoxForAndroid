@@ -20,28 +20,20 @@ import io.nekohasekai.sagernet.ktx.FixedLinearLayoutManager
 import io.nekohasekai.sagernet.ktx.needReload
 import io.nekohasekai.sagernet.ktx.needRestart
 import io.nekohasekai.sagernet.ktx.remove
-import io.nekohasekai.sagernet.utils.Theme
-import moe.matsuri.nb4a.ui.ColorPickerPreference
 import moe.matsuri.nb4a.ui.EditConfigPreference
 import moe.matsuri.nb4a.ui.LongClickListPreference
 import moe.matsuri.nb4a.ui.MTUPreference
-import moe.matsuri.nb4a.ui.DpiEditTextPreference
 import com.takisoft.preferencex.PreferenceFragmentCompat
 import com.takisoft.preferencex.SimpleMenuPreference
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
-import java.util.Locale
+import java.io.File
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import java.io.File
-import io.nekohasekai.sagernet.utils.DPIController
 
 class SettingsPreferenceFragment : PreferenceFragmentCompat() {
 
     private lateinit var isProxyApps: SwitchPreference
     private lateinit var globalCustomConfig: EditConfigPreference
-    private lateinit var dynamicSwitch: SwitchPreference
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,162 +49,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         preferenceManager.preferenceDataStore = DataStore.configurationStore
         DataStore.initGlobal()
         addPreferencesFromResource(R.xml.global_preferences)
-
-        val appTheme = findPreference<ColorPickerPreference>(Key.APP_THEME)!!
-        appTheme.setOnPreferenceChangeListener { _, newTheme ->
-            if (DataStore.serviceState.started) {
-                SagerNet.reloadService()
-            }
-            val theme = Theme.getTheme(newTheme as Int)
-            requireActivity().apply {
-                setTheme(theme)
-                ActivityCompat.recreate(this)
-            }
-            true
-        }
-
-        val nightTheme = findPreference<SimpleMenuPreference>(Key.NIGHT_THEME)!!
-        nightTheme.setOnPreferenceChangeListener { _, newTheme ->
-            Theme.currentNightMode = (newTheme as String).toInt()
-            Theme.applyNightTheme()
-            true
-        }
-
-         dynamicSwitch = findPreference("dynamic_theme_switch")!!
-         val isDynamicInitially = DataStore.appTheme == Theme.DYNAMIC
-         dynamicSwitch.isChecked = isDynamicInitially
-         appTheme.isEnabled = !isDynamicInitially
-         var lastAppTheme = DataStore.lastAppTheme
-         if (lastAppTheme == 0) {
-            lastAppTheme = Theme.TEAL
-            DataStore.lastAppTheme = lastAppTheme
-       }
-         
-          dynamicSwitch.onPreferenceChangeListener =
-              Preference.OnPreferenceChangeListener { _, newValue ->
-                val isDynamic = newValue as Boolean
-                if (isDynamic) {
-                DataStore.lastAppTheme = DataStore.appTheme
-                DataStore.appTheme = Theme.DYNAMIC
-                } else {
-                DataStore.appTheme = DataStore.lastAppTheme.takeIf { it != Theme.DYNAMIC } ?: Theme.TEAL
-        }
-
-            Theme.apply(requireContext().applicationContext)
-            appTheme.isEnabled = !isDynamic
-            requireActivity().recreate()
-            true
-       }
-
-        val boldFontSwitch = findPreference<SwitchPreference>("bold_font_switch")
-        if (boldFontSwitch != null) {
-            boldFontSwitch.isChecked = DataStore.boldFontEnabled
-            boldFontSwitch.setOnPreferenceChangeListener { _, newValue ->
-                DataStore.boldFontEnabled = newValue as Boolean
-                Theme.apply(requireContext().applicationContext)
-                requireActivity().recreate()
-                true
-            }
-        }
-
-        val trueBlackSwitch = findPreference<SwitchPreference>("true_dark_enabled")
-        if (trueBlackSwitch != null) {
-            trueBlackSwitch.isChecked = DataStore.trueBlackEnabled
-            val isNightModeActive = Theme.usingNightMode()
-            trueBlackSwitch.isEnabled = isNightModeActive
-            if (!isNightModeActive) {
-                trueBlackSwitch.summary = getString(R.string.pref_true_black_only_in_night_mode)
-            } else {
-                trueBlackSwitch.summary = getString(R.string.pref_true_black_summary)
-            }
-
-            trueBlackSwitch.setOnPreferenceChangeListener { _, newValue ->
-                val enabled = newValue as Boolean
-                DataStore.trueBlackEnabled = enabled
-                Theme.apply(requireContext().applicationContext)
-                requireActivity().recreate()
-                true
-            }
-
-            nightTheme.setOnPreferenceChangeListener { _, newValue ->
-                val newMode = (newValue as String).toInt()
-                Theme.currentNightMode = newMode
-                Theme.applyNightTheme()
-                val nowNight = Theme.usingNightMode()
-                trueBlackSwitch.isEnabled = nowNight
-                trueBlackSwitch.summary = if (nowNight) {
-                    getString(R.string.pref_true_black_summary)
-                } else {
-                    getString(R.string.pref_true_black_only_in_night_mode)
-                }
-
-                if (!nowNight && DataStore.trueBlackEnabled) {
-                    DataStore.trueBlackEnabled = false
-                    trueBlackSwitch.isChecked = false
-                }
-
-                true
-            }
-        }
-
-        val soundConnectSwitch = findPreference<SwitchPreference>("sound_connect")
-        soundConnectSwitch?.apply {
-            isChecked = DataStore.soundOnConnect
-            setOnPreferenceChangeListener { _, newValue ->
-                DataStore.soundOnConnect = newValue as Boolean
-                true
-            }
-        }
-
-        val dpiPref = findPreference<DpiEditTextPreference>("custom_dpi")
-         dpiPref?.apply {
-           val defaultDpi = resources.displayMetrics.densityDpi
-           val currentDpi = DataStore.dpiValue.takeIf { it > 0 } ?: defaultDpi
-           text = currentDpi.toString()
-
-           setOnBindEditTextListener { editText ->
-               editText.inputType = EditorInfo.TYPE_CLASS_NUMBER
-           }
-
-           setOnPreferenceChangeListener { _, newValue ->
-               val dpi = (newValue as String).toIntOrNull() ?: currentDpi
-               val clamped = dpi.coerceIn(200, 500)
-               DataStore.dpiValue = clamped
-               DPIController.applyDpi(requireContext(), clamped)
-               requireActivity().recreate()
-               true
-            }
-        }
-
-        fun getLanguageDisplayName(code: String): String {
-        return when (code) {
-            "" -> getString(R.string.language_system_default)
-            "en-US" -> getString(R.string.language_en_display_name)
-            "id" -> getString(R.string.language_id_display_name)
-            "zh-Hans-CN" -> getString(R.string.language_zh_Hans_CN_display_name)
-            else -> Locale.forLanguageTag(code).displayName
-        }
-    }
-
-    val appLanguage = findPreference<SimpleMenuPreference>(Key.APP_LANGUAGE)
-
-    if (appLanguage != null) {
-        val locale = when (val value = AppCompatDelegate.getApplicationLocales().toLanguageTags()) {
-            "in" -> "id" // handle old Android "in" locale code
-            else -> value
-        }
-
-        appLanguage.summary = getLanguageDisplayName(locale)
-        appLanguage.value = if (locale in resources.getStringArray(R.array.language_value)) locale else ""
-
-        appLanguage.setOnPreferenceChangeListener { _, newValue ->
-            val newLocale = newValue as String
-            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(newLocale))
-            appLanguage.summary = getLanguageDisplayName(newLocale)
-            appLanguage.value = newLocale
-            true
-        }
-    }
 
         val mixedPort = findPreference<EditTextPreference>(Key.MIXED_PORT)!!
         mixedPort.setOnBindEditTextListener(EditTextPreferenceModifiers.Port)
@@ -236,7 +72,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             needReload()
             true
         }
-        val hideFromRecentApps = findPreference<SwitchPreference>("hide_from_recent_apps")!!
+
         val enableClashAPI = findPreference<SwitchPreference>(Key.ENABLE_CLASH_API)!!
         enableClashAPI.setOnPreferenceChangeListener { _, newValue ->
             (activity as? MainActivity)?.refreshNavMenu(newValue as Boolean)
@@ -255,7 +91,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             rulesGeoipUrl.isVisible = provider == 5
             true
         }
-        
+
         val serviceMode = findPreference<Preference>(Key.SERVICE_MODE)!!
         serviceMode.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, _ ->
             if (DataStore.serviceState.started) SagerNet.stopService()
@@ -305,7 +141,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             }.show()
             true
         }
-        
+
         // Assign reload listeners
         mixedPort.onPreferenceChangeListener = reloadListener
         findPreference<SwitchPreference>(Key.APPEND_HTTP_PROXY)!!.onPreferenceChangeListener = reloadListener
@@ -323,15 +159,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         findPreference<SwitchPreference>(Key.RESOLVE_DESTINATION)!!.onPreferenceChangeListener = reloadListener
         findPreference<SimpleMenuPreference>(Key.TUN_IMPLEMENTATION)!!.onPreferenceChangeListener = reloadListener
         findPreference<SwitchPreference>(Key.ACQUIRE_WAKE_LOCK)!!.onPreferenceChangeListener = reloadListener
-        findPreference<SimpleMenuPreference>("fab_style")!!.setOnPreferenceChangeListener { _, _ ->
-            requireActivity().apply {
-                this.finish()
-                startActivity(intent)
-            }
-            true
-        }
 
-        // Fixed placement — keep this inside the function
         globalCustomConfig.onPreferenceChangeListener = reloadListener
     }
 
@@ -344,7 +172,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             globalCustomConfig.notifyChanged()
         }
     }
-    
+
     private fun clearAppCache() {
         try {
             val cacheDir = SagerNet.application.cacheDir
@@ -392,4 +220,3 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         return false
     }
 }
-
