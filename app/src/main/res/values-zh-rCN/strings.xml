@@ -551,6 +551,8 @@
 HatsuneMikuUwU 开发组"</string>
     <string name="uwu_theme_settings_summary">自定义强调色</string>
     <string name="uwu_theme_settings_title">主题设置</string>
+    <string name="uwu_banner_theme_summary">更改应用的主题和颜色</string>
+    <string name="uwu_banner_theme_title">界面与外观</string>
 
     <string name="uwu_welcome_title">欢迎来到</string>
     <string name="uwu_welcome_summary_1">"MikuBox,

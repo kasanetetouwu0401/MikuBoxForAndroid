@@ -556,6 +556,8 @@ yang Anda butuhkan."</string>
 Oleh Tim Pengembang HatsuneMikuUwU"</string>
     <string name="uwu_theme_settings_summary">Pilih sendiri warna aksennya</string>
     <string name="uwu_theme_settings_title">Pengaturan Tema</string>
+    <string name="uwu_banner_theme_summary">Ubah tema dan warna aplikasi</string>
+    <string name="uwu_banner_theme_title">Tampilan dan nuansa</string>
 
     <!-- miku-->
     <string name="uwu_miku_gender_title">Jenis Kelamin</string>
