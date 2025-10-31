@@ -29,7 +29,7 @@ import io.nekohasekai.sagernet.ktx.*
 import io.nekohasekai.sagernet.ui.ProfileSelectActivity
 import moe.matsuri.nb4a.Protocols.getProtocolColor
 
-class ChainSettingsActivity : ProfileSettingsActivity<ChainBean>(R.layout.layout_chain_settings) {
+class ChainSettingsActivity : ProfileSettingsActivity<ChainBean>(R.layout.uwu_collapse_layout_chain) {
 
     override fun createEntity() = ChainBean()
 

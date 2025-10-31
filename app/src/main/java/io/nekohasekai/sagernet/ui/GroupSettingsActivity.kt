@@ -31,10 +31,11 @@ import io.nekohasekai.sagernet.widget.ListListener
 import io.nekohasekai.sagernet.widget.OutboundPreference
 import kotlinx.parcelize.Parcelize
 import com.takisoft.preferencex.SimpleMenuPreference
+import com.google.android.material.appbar.CollapsingToolbarLayout
 
 @Suppress("UNCHECKED_CAST")
 class GroupSettingsActivity(
-    @LayoutRes resId: Int = R.layout.layout_config_settings,
+    @LayoutRes resId: Int = R.layout.uwu_collapse_layout,
 ) : ThemedActivity(resId),
     OnPreferenceDataStoreChangeListener {
 
@@ -199,9 +200,13 @@ class GroupSettingsActivity(
     @SuppressLint("CommitTransaction")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setSupportActionBar(findViewById(R.id.toolbar))
+        val collapsingToolbar =
+            findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
+        collapsingToolbar.title = getString(R.string.group_settings)
+
         supportActionBar?.apply {
-            setTitle(R.string.group_settings)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_navigation_close)
         }

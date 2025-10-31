@@ -40,10 +40,11 @@ import io.nekohasekai.sagernet.widget.ListListener
 import io.nekohasekai.sagernet.widget.OutboundPreference
 import kotlinx.parcelize.Parcelize
 import moe.matsuri.nb4a.ui.EditConfigPreference
+import com.google.android.material.appbar.CollapsingToolbarLayout
 
 @Suppress("UNCHECKED_CAST")
 class RouteSettingsActivity(
-    @LayoutRes resId: Int = R.layout.layout_settings_activity,
+    @LayoutRes resId: Int = R.layout.uwu_collapse_layout_list,
 ) : ThemedActivity(resId),
     OnPreferenceDataStoreChangeListener {
 
@@ -215,9 +216,13 @@ class RouteSettingsActivity(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setSupportActionBar(findViewById(R.id.toolbar))
+        val collapsingToolbar =
+            findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
+        collapsingToolbar.title = getString(R.string.cag_route)
+
         supportActionBar?.apply {
-            setTitle(R.string.cag_route)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_navigation_close)
         }

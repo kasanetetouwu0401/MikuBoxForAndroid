@@ -1,5 +1,15 @@
 <resources>
 
+  <style name="Theme.SagerNet.CollapsingToolbarTitle.Collapsed" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">20.0dip</item>
+        <item name="android:letterSpacing">-0.01665734</item>
+    </style>
+  
+    <style name="Theme.SagerNet.CollapsingToolbarTitle.Expanded" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">30.0dip</item>
+        <item name="android:letterSpacing">-0.021954114</item>
+    </style>
+
   <style name="Theme.SagerNet.True.Black" parent="@style/ThemeOverlay.MaterialComponents">
         <item name="android:colorBackground">#ff000000</item>
         <item name="colorBg">#ff000000</item>

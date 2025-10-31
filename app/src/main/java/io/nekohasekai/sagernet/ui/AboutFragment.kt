@@ -30,6 +30,7 @@ import io.nekohasekai.sagernet.widget.ListListener
 import libcore.Libcore
 import moe.matsuri.nb4a.plugin.Plugins
 import androidx.core.net.toUri
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.nekohasekai.sagernet.SagerNet
 import io.nekohasekai.sagernet.database.DataStore
@@ -42,9 +43,10 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = LayoutAboutBinding.bind(view)
+        val collapsingToolbar = view.findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
 
         ViewCompat.setOnApplyWindowInsetsListener(view, ListListener)
-        toolbar.setTitle(R.string.menu_about)
+        collapsingToolbar.title = getString(R.string.menu_about)
 
         parentFragmentManager.beginTransaction()
             .replace(R.id.about_fragment_holder, AboutContent())

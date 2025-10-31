@@ -20,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.neko.marquee.text.AutoMarqueeTextView
+import androidx.lifecycle.LifecycleOwner
 
 class StatsBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
@@ -82,30 +83,33 @@ class StatsBar @JvmOverloads constructor(
     }
 
     fun changeState(state: BaseService.State) {
-        val activity = context as MainActivity
-        fun postWhenStarted(what: () -> Unit) = activity.lifecycleScope.launch(Dispatchers.Main) {
+        val activity = context as? LifecycleOwner ?: return
+        activity.lifecycleScope.launch(Dispatchers.Main) {
             delay(100L)
-            activity.whenStarted { what() }
-        }
-        if ((state == BaseService.State.Connected).also { hideOnScroll = it }) {
-            postWhenStarted {
-                if (allowShow) performShow()
-                setStatus(app.getText(R.string.vpn_connected))
+            when (state) {
+                BaseService.State.Connected -> {
+                    hideOnScroll = true
+                    allowShow = true
+                    performShow()
+                    setStatus(context.getText(R.string.vpn_connected))
+                }
+
+                else -> {
+                    hideOnScroll = false
+                    allowShow = false
+                    performHide()
+                    updateSpeed(0, 0)
+                    setStatus(
+                        context.getText(
+                            when (state) {
+                                BaseService.State.Connecting -> R.string.connecting
+                                BaseService.State.Stopping -> R.string.stopping
+                                else -> R.string.not_connected
+                            }
+                        )
+                    )
+                }
             }
-        } else {
-            postWhenStarted {
-                performHide()
-            }
-            updateSpeed(0, 0)
-            setStatus(
-                context.getText(
-                    when (state) {
-                        BaseService.State.Connecting -> R.string.connecting
-                        BaseService.State.Stopping -> R.string.stopping
-                        else -> R.string.not_connected
-                    }
-                )
-            )
         }
     }
 

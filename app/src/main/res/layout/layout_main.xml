@@ -31,7 +31,7 @@
             android:nextFocusDown="@+id/stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="?attr/fabColorBackground"
+            app:backgroundTint="?attr/colorPrimary"
             app:elevation="0.0dip"
             app:layout_anchor="@+id/stats"
             app:pressedTranslationZ="6.0dip"
@@ -266,7 +266,7 @@
                                     android:layout_marginTop="16.0dip"
                                     android:layout_marginBottom="16.0dip"
                                     android:layout_marginStart="16.0dip"
-                                    android:layout_marginEnd="5.0dip">
+                                    android:layout_marginEnd="8.0dip">
                                     <com.neko.circleimageview.CircleImageView
                                         android:layout_width="50.0dip"
                                         android:layout_height="50.0dip"
@@ -282,7 +282,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.0"
-                                    android:layout_marginStart="5.0dip"
+                                    android:layout_marginStart="8.0dip"
                                     android:layout_marginEnd="5.0dip">
                                     <LinearLayout
                                         android:orientation="vertical"
@@ -297,7 +297,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="@string/uwu_banner_title"
                                             android:singleLine="false" />
-                                        <com.neko.marquee.text.Greetings
+                                        <com.neko.marquee.text.RandomText
                                             android:textAppearance="@style/TextAppearance.M3.Sys.Typescale.TitleMedium"
                                             android:textSize="14.0sp"
                                             android:textColor="?attr/colorOnSecondaryContainer"
@@ -305,6 +305,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:singleLine="true"
+                                            uwu_runnable="true"
                                             android:marqueeRepeatLimit="marquee_forever" />
                                     </LinearLayout>
                                 </RelativeLayout>
