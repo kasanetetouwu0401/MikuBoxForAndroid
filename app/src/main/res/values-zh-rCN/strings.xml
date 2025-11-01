@@ -521,6 +521,8 @@
     <string name="reset_dpi_title">重置 DPI</string>
     <string name="reset_dpi_message">是否要将 DPI 恢复为系统默认值 (%1$d)?</string>
     <string name="reset">重置</string>
+    <string name="banner_home_title">显示首页横幅</string>
+    <string name="banner_home_summary">隐藏或显示首页横幅</string>
     
     <!-- uwu -->
     <string name="uwu_about_miku_title">谁是 Hatsune Miku？</string>

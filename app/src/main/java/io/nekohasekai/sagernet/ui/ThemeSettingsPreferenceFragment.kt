@@ -203,5 +203,16 @@ class ThemeSettingsPreferenceFragment : PreferenceFragmentCompat() {
             }
             true
         }
+        
+     // Banner home show or hide
+     val layoutController: SwitchPreference? = findPreference("show_banner_layout")
+          layoutController?.apply {
+              isChecked = DataStore.showBannerLayout
+              setOnPreferenceChangeListener { _: Preference, newValue: Any ->
+                  val show = newValue as Boolean
+                  DataStore.showBannerLayout = show
+                  true
+             }
+        }
     }
 }

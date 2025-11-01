@@ -134,6 +134,8 @@ class ConfigurationFragment @JvmOverloads constructor(
     lateinit var tabLayout: TabLayout
     lateinit var groupPager: ViewPager2
 
+    private var bannerLayoutListener: OnPreferenceDataStoreChangeListener? = null
+
     val alwaysShowAddress by lazy { DataStore.alwaysShowAddress }
 
     fun getCurrentGroupFragment(): GroupFragment? {
@@ -177,6 +179,8 @@ class ConfigurationFragment @JvmOverloads constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupBannerLayoutController()
 
         if (!select) {
             toolbar.inflateMenu(R.menu.add_profile_menu)
@@ -262,6 +266,15 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        bannerLayoutListener?.let {
+            DataStore.configurationStore.unregisterChangeListener(it)
+        }
+        bannerLayoutListener = null
+        
+        super.onDestroyView()
     }
 
     override fun onDestroy() {
@@ -1757,5 +1770,26 @@ class ConfigurationFragment @JvmOverloads constructor(
         searchView.onActionViewCollapsed()
         searchView.clearFocus()
     }
+    
+    private fun setupBannerLayoutController() {
+        val linear = requireView().findViewById<View>(R.id.banner_home)
+        linear?.visibility = if (DataStore.showBannerLayout) View.VISIBLE else View.GONE
 
+        if (bannerLayoutListener == null) {
+            bannerLayoutListener = object : OnPreferenceDataStoreChangeListener {
+                override fun onPreferenceDataStoreChanged(store: PreferenceDataStore, key: String) {
+                    if (key == "show_banner_layout") {
+                        val show = DataStore.showBannerLayout
+
+                        if (!isAdded) return
+
+                        requireActivity().runOnUiThread {
+                            linear?.visibility = if (show) View.VISIBLE else View.GONE
+                        }
+                    }
+                }
+            }
+            DataStore.configurationStore.registerChangeListener(bannerLayoutListener!!)
+        }
+    }
 }

@@ -81,7 +81,7 @@
             android:defaultValue="true"
             app:icon="@drawable/ic_audio" />
         <com.takisoft.preferencex.SimpleMenuPreference
-            android:layout="@layout/uwu_bot"
+            android:layout="@layout/uwu_mid"
             app:defaultValue=""
             app:entries="@array/language_entry"
             app:entryValues="@array/language_value"
@@ -89,5 +89,13 @@
             app:isPreferenceVisible="true"
             app:key="app_language"
             app:title="@string/language" />
+         <SwitchPreference
+            android:layout="@layout/uwu_bot_switch"
+            android:title="@string/banner_home_title"
+            android:key="show_banner_layout"
+            android:summary="@string/banner_home_summary"
+            android:widgetLayout="@layout/uwu_switch"
+            android:defaultValue="true"
+            app:icon="@drawable/ic_toggle_switch" />
     </PreferenceCategory>
 </PreferenceScreen>

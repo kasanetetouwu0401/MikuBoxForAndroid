@@ -620,6 +620,8 @@ Please grant this permission in System Settings."</string>
     <string name="reset_dpi_title">Reset DPI</string>
     <string name="reset_dpi_message">Do you want to return the DPI to the system default (%1$d)?</string>
     <string name="reset">Reset</string>
+    <string name="banner_home_title">Show home banner</string>
+    <string name="banner_home_summary">Hide or show banner on homepage</string>
     
     <!-- uwu -->
     <string name="uwu_about_miku_title">Who is Hatsune Miku?</string>

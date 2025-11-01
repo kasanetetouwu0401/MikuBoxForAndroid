@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         layout="@layout/layout_appbar" />
     <LinearLayout
+        android:id="@+id/banner_home"
         android:background="?attr/colorPrimary"
         android:paddingBottom="16.0dip"
         android:clipToPadding="false"
