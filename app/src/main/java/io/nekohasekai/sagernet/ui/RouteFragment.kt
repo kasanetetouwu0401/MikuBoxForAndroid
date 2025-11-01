@@ -34,7 +34,12 @@ class RouteFragment : ToolbarFragment(R.layout.layout_route), Toolbar.OnMenuItem
         activity = requireActivity() as MainActivity
 
         ViewCompat.setOnApplyWindowInsetsListener(view, ListListener)
-        toolbar.setTitle(R.string.menu_route)
+
+        val collapsingToolbar = view.findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
+        val toolbarView = view.findViewById<Toolbar>(R.id.toolbar)
+        collapsingToolbar.title = getString(R.string.menu_route)
+
+        toolbar = toolbarView
         toolbar.inflateMenu(R.menu.add_route_menu)
         toolbar.setOnMenuItemClickListener(this)
 
