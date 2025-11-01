@@ -21,6 +21,7 @@ import io.nekohasekai.sagernet.databinding.LayoutRouteItemBinding
 import io.nekohasekai.sagernet.ktx.*
 import io.nekohasekai.sagernet.widget.ListListener
 import io.nekohasekai.sagernet.widget.UndoSnackbarManager
+import io.nekohasekai.sagernet.widget.StatsBar
 
 class RouteFragment : ToolbarFragment(R.layout.layout_route), Toolbar.OnMenuItemClickListener {
 
@@ -50,6 +51,20 @@ class RouteFragment : ToolbarFragment(R.layout.layout_route), Toolbar.OnMenuItem
         ProfileManager.addListener(ruleAdapter)
         ruleListView.adapter = ruleAdapter
         undoManager = UndoSnackbarManager(activity, ruleAdapter)
+
+        val bottomAppBar = requireActivity().findViewById<StatsBar>(R.id.stats)
+        if (bottomAppBar != null) {
+            ruleListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (dy > 6) {
+                        bottomAppBar.performHide()
+                    } else if (dy < -6) {
+                        bottomAppBar.performShow()
+                    }
+                }
+            })
+        }
 
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.START) {
 
