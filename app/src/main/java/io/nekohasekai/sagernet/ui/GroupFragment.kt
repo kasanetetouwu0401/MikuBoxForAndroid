@@ -32,6 +32,8 @@ import moe.matsuri.nb4a.utils.Util
 import moe.matsuri.nb4a.utils.toBytesString
 import java.lang.NumberFormatException
 import java.util.*
+import io.nekohasekai.sagernet.bg.BaseService
+import io.nekohasekai.sagernet.widget.StatsBar
 
 class GroupFragment : ToolbarFragment(R.layout.layout_group),
     Toolbar.OnMenuItemClickListener {
@@ -64,6 +66,44 @@ class GroupFragment : ToolbarFragment(R.layout.layout_group),
         groupListView.adapter = groupAdapter
 
         undoManager = UndoSnackbarManager(activity, groupAdapter)
+
+        view.post {
+            val bottomAppBar = requireActivity().findViewById<StatsBar>(R.id.stats) ?: return@post
+
+            fun updateBottomBarVisibility() {
+                val isConnected = DataStore.serviceState == BaseService.State.Connected
+                val showController = DataStore.showBottomBar
+
+                if (!isConnected) {
+                    bottomAppBar.performHide()
+                } else {
+                    if (showController) bottomAppBar.performShow()
+                    else bottomAppBar.performHide()
+                }
+            }
+
+            updateBottomBarVisibility()
+
+            if (groupListView != null) {
+                ViewCompat.setNestedScrollingEnabled(groupListView, true)
+
+                groupListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        super.onScrolled(recyclerView, dx, dy)
+
+                        val isConnected = DataStore.serviceState == BaseService.State.Connected
+                        val showController = DataStore.showBottomBar
+
+                        if (isConnected && showController) {
+                            if (dy > 6) bottomAppBar.performHide()
+                            else if (dy < -6) bottomAppBar.performShow()
+                        } else {
+                            bottomAppBar.performHide()
+                        }
+                    }
+                })
+            }
+        }
 
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.START
