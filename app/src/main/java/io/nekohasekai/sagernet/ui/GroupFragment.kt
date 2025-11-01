@@ -46,7 +46,12 @@ class GroupFragment : ToolbarFragment(R.layout.layout_group),
         activity = requireActivity() as MainActivity
 
         ViewCompat.setOnApplyWindowInsetsListener(view, ListListener)
-        toolbar.setTitle(R.string.menu_group)
+
+        val collapsingToolbar = view.findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
+        val toolbarView = view.findViewById<Toolbar>(R.id.toolbar)
+        collapsingToolbar.title = getString(R.string.menu_group)
+
+        toolbar = toolbarView
         toolbar.inflateMenu(R.menu.add_group_menu)
         toolbar.setOnMenuItemClickListener(this)
 
